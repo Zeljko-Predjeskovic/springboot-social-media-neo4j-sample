@@ -6,7 +6,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.predjeskovic.neo4jrestapi.persistence.PersonReporitory;
 import com.predjeskovic.neo4jrestapi.domain.Person;
 
 @SpringBootTest
@@ -16,30 +15,30 @@ public class PersonRepositoryTest {
     private PersonReporitory personReporitory;
 
     private Person person;
-    private Person teammate;
-    private Person teammate2;
-    private Person teammate3;
+    private Person person1;
+    private Person person2;
+    private Person person3;
 
     @BeforeEach
     void init(){
         person = new Person("Zeljko","Predjeskovic","123@mail.at");
-        teammate = new Person("Kacper","Zaleski","123@mail.at");
-        teammate2 = new Person("Dawud","Hussein","123@mail.at");
-        teammate3 = new Person("Maximilian","Duranik","123@mail.at");
+        person1 = new Person("Kacper","Zaleski","123@mail.at");
+        person2 = new Person("Dawud","Hussein","123@mail.at");
+        person3 = new Person("Maximilian","Duranik","123@mail.at");
 
-        personReporitory.save(teammate);
-        personReporitory.save(teammate2);
-        personReporitory.save(teammate3);
+        personReporitory.save(person);
+        personReporitory.save(person);
+        personReporitory.save(person);
 
-        person.worksWith(teammate);
-        person.worksWith(teammate2);
-        person.worksWith(teammate3);
+        person.friendsWith(person1);
+        person.friendsWith(person2);
+        person.friendsWith(person3);
         personReporitory.save(person);
     }
 
     @AfterEach
     void initAfter(){
-        personReporitory.deleteAll();
+       personReporitory.deleteAll();
     }
 
     @Test
