@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.predjeskovic.neo4jrestapi.domain.Person;
 
+import java.util.List;
+
 @SpringBootTest
 public class PersonRepositoryTest {
 
@@ -26,24 +28,29 @@ public class PersonRepositoryTest {
         person2 = new Person("Dawud","Hussein","123@mail.at");
         person3 = new Person("Maximilian","Duranik","123@mail.at");
 
-        personReporitory.save(person);
-        personReporitory.save(person);
-        personReporitory.save(person);
 
-        person.friendsWith(person1);
-        person.friendsWith(person2);
-        person.friendsWith(person3);
+        person2.friendsWith(person1); //Hussein friends with Zaleski
+
+        person.friendsWith(person1); //friends with Zaleski
+        person.friendsWith(person2); //friends with Hussein
+        person.friendsWith(person3); //friends with Duranik
+        personReporitory.save(person1);
+        personReporitory.save(person2);
+        personReporitory.save(person3);
         personReporitory.save(person);
     }
 
     @AfterEach
     void initAfter(){
-       personReporitory.deleteAll();
+      personReporitory.deleteAll();
     }
 
     @Test
     void findByLastName(){
-        Assertions.assertEquals(personReporitory.findByLastName("Predjeskovic").getLastName(),person.getLastName());
+        Person p = personReporitory.findByLastName("Predjeskovic");
+
+        System.out.println(p);
+        Assertions.assertEquals(p.getLastName(),person.getLastName());
     }
 
 }

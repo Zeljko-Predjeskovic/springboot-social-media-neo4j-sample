@@ -5,20 +5,13 @@ import org.springframework.data.neo4j.core.schema.*;
 import org.springframework.lang.Nullable;
 
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.Set;
 
 @Node("Person") @Getter @Setter
 @EqualsAndHashCode @ToString
-public class Person {
+public class Person extends Persistable{
 
-
-    private Person() {
-
-    }
-
-    @Id @GeneratedValue
-    private Long id;
+    private Person() { }
 
     @Property("firstName")
     private String firstName;
@@ -31,7 +24,7 @@ public class Person {
 
 
     @Nullable
-    @Relationship(type = "Friends")
+    @Relationship(type = "FRIENDS")
     private Set<Person> friends;
 
 
