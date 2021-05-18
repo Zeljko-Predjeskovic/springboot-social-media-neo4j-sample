@@ -16,6 +16,14 @@ Neo4J: https://neo4j.com/developer/spring-data-neo4j/
 
     mvn install
 
+## NoSql Graph Database Overview
+
+why nosql
+fast queries (Dijkstras Algo)
+relations
+have properties
+good analytics
 
 
-
+### Example of a social media schema
+![graph](./images/graphDia.png)
