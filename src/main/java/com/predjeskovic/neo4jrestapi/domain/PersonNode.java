@@ -9,9 +9,9 @@ import java.util.Set;
 
 @Node("Person") @Getter @Setter
 @EqualsAndHashCode @ToString
-public class Person extends Persistable{
+public class PersonNode extends Persistable{
 
-    private Person() { }
+    private PersonNode() { }
 
     @Property("firstName")
     private String firstName;
@@ -25,17 +25,17 @@ public class Person extends Persistable{
 
     @Nullable
     @Relationship(type = "FRIENDS")
-    private Set<Person> friends;
+    private Set<PersonNode> friends;
 
 
-    public void friendsWith(Person person) {
+    public void friendsWith(PersonNode person) {
         if (friends == null) {
             friends = new HashSet<>();
         }
         friends.add(person);
     }
 
-    public Person(String firstName, String lastName, String email) {
+    public PersonNode(String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

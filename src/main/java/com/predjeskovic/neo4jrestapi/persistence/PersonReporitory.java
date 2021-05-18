@@ -1,6 +1,6 @@
 package com.predjeskovic.neo4jrestapi.persistence;
 
-import com.predjeskovic.neo4jrestapi.domain.Person;
+import com.predjeskovic.neo4jrestapi.domain.PersonNode;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.stereotype.Repository;
@@ -10,8 +10,8 @@ import java.util.Map;
 
 
 @Repository
-public interface PersonReporitory extends Neo4jRepository<Person,Long> {
+public interface PersonReporitory extends Neo4jRepository<PersonNode,Long> {
 
-    Person findByLastName(String Lastname);
+    PersonNode findByLastName(String Lastname);
 
 }

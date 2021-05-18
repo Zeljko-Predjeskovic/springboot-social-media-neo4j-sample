@@ -1,32 +1,33 @@
 package com.predjeskovic.neo4jrestapi.persistence;
 
+import com.predjeskovic.neo4jrestapi.domain.PersonNode;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import com.predjeskovic.neo4jrestapi.domain.Person;
+import com.predjeskovic.neo4jrestapi.domain.PersonNode;
 
 import java.util.List;
 
 @SpringBootTest
-public class PersonRepositoryTest {
+public class PersonNodeRepositoryTest {
 
     @Autowired
     private PersonReporitory personReporitory;
 
-    private Person person;
-    private Person person1;
-    private Person person2;
-    private Person person3;
+    private PersonNode person;
+    private PersonNode person1;
+    private PersonNode person2;
+    private PersonNode person3;
 
     @BeforeEach
     void init(){
-        person = new Person("Zeljko","Predjeskovic","123@mail.at");
-        person1 = new Person("Kacper","Zaleski","123@mail.at");
-        person2 = new Person("Dawud","Hussein","123@mail.at");
-        person3 = new Person("Maximilian","Duranik","123@mail.at");
+        person = new PersonNode("Zeljko","Predjeskovic","123@mail.at");
+        person1 = new PersonNode("Kacper","Zaleski","123@mail.at");
+        person2 = new PersonNode("Dawud","Hussein","123@mail.at");
+        person3 = new PersonNode("Maximilian","Duranik","123@mail.at");
 
 
         person2.friendsWith(person1); //Hussein friends with Zaleski
@@ -47,7 +48,7 @@ public class PersonRepositoryTest {
 
     @Test
     void findByLastName(){
-        Person p = personReporitory.findByLastName("Predjeskovic");
+        PersonNode p = personReporitory.findByLastName("Predjeskovic");
 
         System.out.println(p);
         Assertions.assertEquals(p.getLastName(),person.getLastName());
