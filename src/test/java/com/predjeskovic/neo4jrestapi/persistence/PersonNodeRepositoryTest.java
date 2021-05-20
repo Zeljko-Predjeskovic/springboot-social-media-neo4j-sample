@@ -1,5 +1,6 @@
 package com.predjeskovic.neo4jrestapi.persistence;
 
+import com.predjeskovic.neo4jrestapi.domain.FriendRelation;
 import com.predjeskovic.neo4jrestapi.domain.PersonNode;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.predjeskovic.neo4jrestapi.domain.PersonNode;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @SpringBootTest
@@ -24,26 +26,26 @@ public class PersonNodeRepositoryTest {
 
     @BeforeEach
     void init(){
-        person = new PersonNode("Zeljko","Predjeskovic","123@mail.at");
-        person1 = new PersonNode("Kacper","Zaleski","123@mail.at");
-        person2 = new PersonNode("Dawud","Hussein","123@mail.at");
-        person3 = new PersonNode("Maximilian","Duranik","123@mail.at");
+        person = new PersonNode("Zeljko","Predjeskovic","Yatotoast","123@mail.at");
+        person1 = new PersonNode("Kacper","Zaleski","K","123@mail.at");
+        person2 = new PersonNode("Dawud","Hussein","D","123@mail.at");
+        person3 = new PersonNode("Maximilian","Duranik","M","123@mail.at");
 
+        person.friendsWith(new FriendRelation(LocalDate.now(),person1));
+        person.friendsWith(new FriendRelation(LocalDate.now(),person2));
+        person.friendsWith(new FriendRelation(LocalDate.now(),person3));
 
-        person2.friendsWith(person1); //Hussein friends with Zaleski
-
-        person.friendsWith(person1); //friends with Zaleski
-        person.friendsWith(person2); //friends with Hussein
-        person.friendsWith(person3); //friends with Duranik
         personReporitory.save(person1);
         personReporitory.save(person2);
         personReporitory.save(person3);
         personReporitory.save(person);
+
     }
+
 
     @AfterEach
     void initAfter(){
-      personReporitory.deleteAll();
+     personReporitory.deleteAll();
     }
 
     @Test
@@ -51,6 +53,7 @@ public class PersonNodeRepositoryTest {
         PersonNode p = personReporitory.findByLastName("Predjeskovic");
 
         System.out.println(p);
+
         Assertions.assertEquals(p.getLastName(),person.getLastName());
     }
 

@@ -4,8 +4,8 @@ import lombok.*;
 import org.springframework.data.neo4j.core.schema.*;
 import org.springframework.lang.Nullable;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Node("Person") @Getter @Setter
 @EqualsAndHashCode @ToString
@@ -19,25 +19,29 @@ public class PersonNode extends Persistable{
     @Property("lastName")
     private String lastName;
 
+
+    @Property("username")
+    private String username;
+
     @Property("email")
     private String email;
 
-
     @Nullable
-    @Relationship(type = "FRIENDS")
-    private Set<PersonNode> friends;
+    @Relationship(type = "FRIENDS", direction = Relationship.Direction.INCOMING)
+    private List<FriendRelation> friends;
 
 
-    public void friendsWith(PersonNode person) {
+    public void friendsWith(FriendRelation friend) {
         if (friends == null) {
-            friends = new HashSet<>();
+            friends = new ArrayList<FriendRelation>();
         }
-        friends.add(person);
+        friends.add(friend);
     }
 
-    public PersonNode(String firstName, String lastName, String email) {
+    public PersonNode(String firstName, String lastName, String username, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
         this.email = email;
     }
 

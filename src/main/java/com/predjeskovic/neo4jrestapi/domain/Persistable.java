@@ -1,13 +1,12 @@
 package com.predjeskovic.neo4jrestapi.domain;
 
 import lombok.Getter;
-import lombok.Setter;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 
 import java.util.Objects;
 
-@Getter @Setter
+@Getter
 public class Persistable {
 
     @Id @GeneratedValue
