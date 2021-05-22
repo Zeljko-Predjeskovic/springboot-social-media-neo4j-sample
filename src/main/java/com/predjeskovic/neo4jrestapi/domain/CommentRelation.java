@@ -1,11 +1,9 @@
 package com.predjeskovic.neo4jrestapi.domain;
 
-
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
-import org.springframework.data.neo4j.core.schema.Property;
 import org.springframework.data.neo4j.core.schema.RelationshipProperties;
 import org.springframework.data.neo4j.core.schema.TargetNode;
 
@@ -13,19 +11,25 @@ import java.time.LocalDate;
 
 @RelationshipProperties
 @EqualsAndHashCode @ToString
-public class FriendRelation extends Persistable{
+public class CommentRelation extends Persistable{
 
-    @Property @Getter
-    private LocalDate friendSince;
+    @Getter
+    private String comment;
+
+    @Getter
+    private LocalDate commentedOn;
 
     @TargetNode @Getter
-    private PersonNode person;
+    private PostNode post;
 
-    private FriendRelation(){  }
+    public CommentRelation (){  }
 
     @Builder
-    public FriendRelation(LocalDate friendSince, PersonNode person) {
-        this.friendSince = friendSince;
-        this.person = person;
+    public CommentRelation(String comment, LocalDate commentedOn, PostNode post){
+        this.comment = comment;
+        this.commentedOn = commentedOn;
+        this.post = post;
     }
+
+
 }

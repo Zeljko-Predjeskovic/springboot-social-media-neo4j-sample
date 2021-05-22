@@ -19,7 +19,7 @@ Neo4J: https://neo4j.com/developer/spring-data-neo4j/
 Define your Neo4j connection in src/main/resources/application.properties
 
     spring.data.neo4j.uri=bolt://localhost:7687 // your connection path
-    spring.data.neo4j.username=neo4j            // database usernam
+    spring.data.neo4j.username=neo4j            // database username
     spring.data.neo4j.password=secret           // database password
 
 The value written in this example is the default connection. You actually don't have to write anything if you
