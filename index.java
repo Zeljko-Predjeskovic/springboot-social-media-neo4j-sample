@@ -19,8 +19,19 @@
  * Working my first time with Neo4j, a nosql graph database I am really excited.
  * My plans and topics are:
  *
- * - A-Neo4j and its connection - B-Object Mapping - C-Repositories - D-Service
- * - E-Presentation/Controller - F-Security - G-Web/Controller
+ * - A-Neo4j and its connection
+ * 
+ * - B-Object Mapping
+ * 
+ * - C-Repositories
+ * 
+ * - D-Service
+ * 
+ * - E-Presentation/Controller
+ * 
+ * - F-Security
+ * 
+ * - G-Web/Controller
  *
  * I will talk about each one of this section on how I write the code, What
  * problems do I have and how am I solving them and of course a bit of theory.

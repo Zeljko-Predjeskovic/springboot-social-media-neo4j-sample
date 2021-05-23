@@ -88,20 +88,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         "projectPath": "Neo4J.java",
         "targetPath": "Neo4J",
         "pageTitle": "Neo4J",
-        "firstHeader": {
-          "type": "heading",
-          "data": {
-            "level": 1,
-            "title": "Neo4J",
-            "slug": "neo4j",
-            "isFileHeader": true
-          },
-          "depth": 1
-        },
         "title": "Neo4J"
       },
-      "depth": 1,
-      "outline": []
+      "depth": 1
     }
   ];
 
