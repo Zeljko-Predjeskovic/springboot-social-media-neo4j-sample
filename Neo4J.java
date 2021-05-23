@@ -22,7 +22,7 @@
  *
  * You could just use some HTML in your Markdown:
  *
- * <img src="drawing.jpg" alt="drawing" width="150px"/>
+ * <img src="./images/neo4jdesktop.PNG" alt="n4jdesktop" width="450px"/>
  *
  * The Movie Database is a default one. You can start it to explore a little of the graph db environment.
  * Hover over your database and click on start.
