@@ -52,9 +52,7 @@ public class PersonNode extends Persistable{
         if(commentedOn == null){
             commentedOn = new ArrayList<CommentRelation>();
         }
-        else{
             commentedOn.add(comment);
-        }
     }
 
     @Nullable @Getter
@@ -65,9 +63,7 @@ public class PersonNode extends Persistable{
         if(posts == null){
             posts = new ArrayList<PostNode>();
         }
-        else{
             posts.add(post);
-        }
     }
 
     @Nullable @Getter
@@ -78,9 +74,7 @@ public class PersonNode extends Persistable{
         if(advertisements == null){
             advertisements = new ArrayList<AdvertisementNode>();
         }
-        else{
             advertisements.add(advertisement);
-        }
 
     }
 
@@ -92,9 +86,7 @@ public class PersonNode extends Persistable{
         if(postsLiked == null){
             postsLiked = new ArrayList<PostNode>();
         }
-        else{
             postsLiked.add(post);
-        }
     }
 
     @Builder
