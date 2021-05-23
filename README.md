@@ -8,6 +8,8 @@ Neo4J: https://neo4j.com/developer/spring-data-neo4j/
 
 ## Start the app
 
+Make sure that you work in a Java 16 environment.
+
     git clone https://github.com/Zeljko-Predjeskovic/springboot-social-media.git
 
     cd springboot-social-media
@@ -15,6 +17,8 @@ Neo4J: https://neo4j.com/developer/spring-data-neo4j/
     mvn clean 
 
     mvn install
+
+    run application on IDE
 
 Define your Neo4j connection in src/main/resources/application.properties
 
@@ -26,14 +30,8 @@ The value written in this example is the default connection. You actually don't 
 use a default connection. Notice that Neo4j uses a [Bolt](https://en.wikipedia.org/wiki/Bolt_(network_protocol)) network protocol to connect. It will not except a http 
 connection.
 
-## NoSql Graph Database Overview
-
-- why neo4j
-- fast queries
-- relations
-- have properties
-- good analytics
-
-
 ### Example of a social media schema
+
+A small example in how my nodes and relations are going to be build.
+
 ![graph](./images/graphDia.png)

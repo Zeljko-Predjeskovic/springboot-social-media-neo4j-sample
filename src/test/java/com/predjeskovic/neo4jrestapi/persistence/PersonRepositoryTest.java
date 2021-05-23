@@ -1,8 +1,6 @@
 package com.predjeskovic.neo4jrestapi.persistence;
 
-import com.predjeskovic.neo4jrestapi.domain.FriendRelation;
-import com.predjeskovic.neo4jrestapi.domain.PersonNode;
-import com.predjeskovic.neo4jrestapi.domain.ProfileNode;
+import com.predjeskovic.neo4jrestapi.domain.*;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -73,7 +71,8 @@ public class PersonRepositoryTest {
     }
 
     @Order(3)
-    @Test void addRelationBetweenTwoPersons(){
+    @Test
+    public void addRelationBetweenTwoPersons(){
        var personX = personRepository.findByUsername("yatotoast");
        var personY = personRepository.findByUsername("Nyumisa");
 
@@ -82,16 +81,43 @@ public class PersonRepositoryTest {
                .person(personY)
                .build());
 
-       personRepository.save(personX);
+       Assertions.assertTrue(personRepository.save(personX)!=null);
 
        person2.friendsWith(FriendRelation.builder()
                .friendSince(LocalDate.of(2016,2,26))
                .person(personX)
                .build());
 
-       personRepository.save(personY);
+       Assertions.assertTrue(personRepository.save(personY)!=null);
+
+
 
     }
 
+    @Order(4)
+    @Test
+    public void createAndLikeCommentPost(){
+        var personX = personRepository.findByUsername("yatotoast");
+        var personY = personRepository.findByUsername("Nyumisa");
+        PostNode post = PostNode.builder()
+                .description("Look at my cute little kitty")
+                .image("cat.png")
+                .cityLocation("Berlin")
+                .tags("cat,cute,adorable")
+                .build();
+
+        personX.posted(post);
+
+        Assertions.assertTrue(personRepository.save(personX)!=null);
+
+        personY.postLiked(post); //should fail. we have to take the post from the db since the id will be null until the db generates it
+        personY.commentedOn(CommentRelation.builder()
+                .post(post)
+                .commentedOn(LocalDate.now())
+                .comment("Soooo cuuute >.<")
+                .build());
+
+        Assertions.assertTrue(personRepository.save(personY)!=null);
+    }
 
 }
