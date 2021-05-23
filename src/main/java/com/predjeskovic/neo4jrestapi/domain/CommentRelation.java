@@ -10,7 +10,7 @@ import org.springframework.data.neo4j.core.schema.TargetNode;
 import java.time.LocalDate;
 
 @RelationshipProperties
-@EqualsAndHashCode @ToString
+@ToString
 public class CommentRelation extends Persistable{
 
     @Getter

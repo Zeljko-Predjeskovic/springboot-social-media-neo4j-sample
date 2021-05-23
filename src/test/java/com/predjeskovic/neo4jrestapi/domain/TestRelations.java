@@ -75,7 +75,6 @@ public class TestRelations {
     Assertions.assertTrue(!person.getCommentedOn().isEmpty() &&
                                   person.getCommentedOn()!=null);
 
-    //Assertions.assertTrue(post.getComments()!=null);
     }
 
     @Test

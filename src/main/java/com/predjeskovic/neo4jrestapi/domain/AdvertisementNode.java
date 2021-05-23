@@ -6,8 +6,10 @@ import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
 import org.springframework.data.neo4j.core.schema.Relationship;
 
+import java.util.Objects;
+
 @Node("Advertisement")
-@EqualsAndHashCode @ToString
+@ToString
 public class AdvertisementNode extends Persistable{
 
     @Property("company")
@@ -34,5 +36,19 @@ public class AdvertisementNode extends Persistable{
         this.tags = tags;
         this.image = image;
         this.linkToProduct = linkToProduct;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        AdvertisementNode that = (AdvertisementNode) o;
+        return company.equals(that.company) && linkToProduct.equals(that.linkToProduct);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(company, linkToProduct);
     }
 }

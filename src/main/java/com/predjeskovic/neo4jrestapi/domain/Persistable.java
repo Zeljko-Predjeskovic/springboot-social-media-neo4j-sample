@@ -8,7 +8,6 @@ import org.springframework.data.neo4j.core.schema.Id;
 
 import java.util.Objects;
 
-
 public class Persistable {
 
     @Id @GeneratedValue

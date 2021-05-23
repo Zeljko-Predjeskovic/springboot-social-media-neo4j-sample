@@ -8,7 +8,7 @@ import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
 
 @Node("Profile")
-@EqualsAndHashCode @ToString
+@ToString
 public class ProfileNode extends Persistable{
 
     @Property("profilePicture")
@@ -24,4 +24,6 @@ public class ProfileNode extends Persistable{
         this.profilePic = profilePic;
         this.biography = biography;
     }
+
+
 }

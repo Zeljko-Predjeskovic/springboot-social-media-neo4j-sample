@@ -6,6 +6,7 @@ import org.springframework.lang.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Node("Person")
 @ToString
@@ -98,6 +99,19 @@ public class PersonNode extends Persistable{
         this.profile = profile;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        PersonNode that = (PersonNode) o;
+        return username.equals(that.username) && email.equals(that.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(username, email);
+    }
 }
 
 

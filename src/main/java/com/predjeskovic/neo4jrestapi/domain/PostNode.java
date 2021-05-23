@@ -13,7 +13,7 @@ import java.util.List;
 
 
 @Node("Post")
-@EqualsAndHashCode @ToString
+@ToString
 public class PostNode extends Persistable{
 
     @Property("description")
@@ -50,5 +50,7 @@ public class PostNode extends Persistable{
 
 
     private PostNode(){  }
+
+
 
 }

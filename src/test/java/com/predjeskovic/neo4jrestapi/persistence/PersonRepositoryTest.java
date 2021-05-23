@@ -27,8 +27,31 @@ public class PersonRepositoryTest {
     @Autowired
     private AdvertisementRepository advertisementRepository;
 
+
+    private PersonNode person;
+    private PersonNode person2;
+
+    @BeforeAll
+    public void initbefore(){
+        person = PersonNode.builder()
+                .firstName("Zeljko")
+                .lastName("Predjeskovic")
+                .email("zepr2022000@gmail.com")
+                .username("yatotoast")
+                .profile(new ProfileNode("img.png","Hello World"))
+                .build();
+
+        person2 = PersonNode.builder()
+                .firstName("Laura")
+                .lastName("Steinberg")
+                .email("xyz@gmail.com")
+                .username("Nyumisa")
+                .profile(new ProfileNode("img.png","Hello World"))
+                .build();
+    }
+
     @AfterAll
-    public void init(){
+    public void initAfter(){
         personRepository.deleteAll();
         postRepository.deleteAll();
         profileRepositroy.deleteAll();
@@ -38,22 +61,6 @@ public class PersonRepositoryTest {
     @Test
     @Order(1)
     public void insertPersons(){
-        PersonNode person = PersonNode.builder()
-                .firstName("Zeljko")
-                .lastName("Predjeskovic")
-                .email("zepr2022000@gmail.com")
-                .username("yatotoast")
-                .profile(new ProfileNode("img.png","Hello World"))
-                .build();
-
-        PersonNode person2 = PersonNode.builder()
-                .firstName("Laura")
-                .lastName("Steinberg")
-                .email("xyz@gmail.com")
-                .username("Nyumisa")
-                .profile(new ProfileNode("img.png","Hello World"))
-                .build();
-
         Assertions.assertTrue(personRepository.save(person)!=null && personRepository.save(person2)!=null);
     }
 
@@ -62,27 +69,27 @@ public class PersonRepositoryTest {
     public void findAll(){
         var persons = personRepository.findAll();
 
-        System.out.println(persons);
-
         Assertions.assertTrue(!persons.isEmpty() && persons!=null);
     }
 
     @Order(3)
     @Test void addRelationBetweenTwoPersons(){
-       var person = personRepository.findByUsername("yatotoast");
-       var person2 = personRepository.findByUsername("Nyumisa");
+       var personX = personRepository.findByUsername("yatotoast");
+       var personY = personRepository.findByUsername("Nyumisa");
 
        person.friendsWith(FriendRelation.builder()
-               .friendSince(LocalDate.now())
-               .person(person2)
+               .friendSince(LocalDate.of(2016,2,26))
+               .person(personY)
                .build());
 
-       person2.friendsWith(new FriendRelation(LocalDate.now(), person));
+       personRepository.save(personX);
 
-       personRepository.save(person);
-       personRepository.save(person2);
+       person2.friendsWith(FriendRelation.builder()
+               .friendSince(LocalDate.of(2016,2,26))
+               .person(personX)
+               .build());
 
-        System.out.println(personRepository.findAll());
+       personRepository.save(personY);
 
     }
 
