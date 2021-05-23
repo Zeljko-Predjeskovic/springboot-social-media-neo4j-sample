@@ -11,4 +11,6 @@ import java.time.LocalDate;
 
 @Repository
 public interface PersonRepository extends Neo4jRepository<PersonNode,Long> {
+
+    PersonNode findByUsername(String username);
 }

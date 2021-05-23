@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Node("Person")
-@EqualsAndHashCode @ToString
+@ToString
 public class PersonNode extends Persistable{
 
     private PersonNode() { }
@@ -29,7 +29,7 @@ public class PersonNode extends Persistable{
     @Getter @Setter
     private String email;
 
-    @Relationship(value = "HAS_PROFILE", direction = Relationship.Direction.INCOMING)
+    @Relationship(value = "HAS_PROFILE")
     @Getter @Setter
     private ProfileNode profile;
 
