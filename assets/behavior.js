@@ -21,57 +21,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         "projectPath": "index.java",
         "targetPath": "index",
         "pageTitle": "index",
-        "firstHeader": {
-          "type": "heading",
-          "data": {
-            "level": 1,
-            "title": "Social media api",
-            "slug": "social-media-api",
-            "isFileHeader": true
-          },
-          "depth": 1,
-          "children": [
-            {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "Introduction",
-                "slug": "introduction"
-              },
-              "depth": 3
-            }, {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "Overview",
-                "slug": "overview"
-              },
-              "depth": 3
-            }
-          ]
-        },
-        "title": "Social media api"
+        "title": "index"
       },
-      "depth": 1,
-      "outline": [
-        {
-          "type": "heading",
-          "data": {
-            "level": 3,
-            "title": "Introduction",
-            "slug": "introduction"
-          },
-          "depth": 3
-        }, {
-          "type": "heading",
-          "data": {
-            "level": 3,
-            "title": "Overview",
-            "slug": "overview"
-          },
-          "depth": 3
-        }
-      ]
+      "depth": 1
     }, {
       "type": "file",
       "data": {
@@ -96,7 +48,26 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
             "slug": "spring-boot-neo4j",
             "isFileHeader": true
           },
-          "depth": 1
+          "depth": 1,
+          "children": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Neo4j installation and setup",
+                "slug": "neo4j-installation-and-setup"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Connection with springboot app",
+                "slug": "connection-with-springboot-app"
+              },
+              "depth": 3
+            }
+          ]
         },
         "title": "Spring boot Neo4J"
       },
@@ -105,19 +76,19 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         {
           "type": "heading",
           "data": {
-            "level": 1,
+            "level": 3,
             "title": "Neo4j installation and setup",
             "slug": "neo4j-installation-and-setup"
           },
-          "depth": 1
+          "depth": 3
         }, {
           "type": "heading",
           "data": {
-            "level": 1,
+            "level": 3,
             "title": "Connection with springboot app",
             "slug": "connection-with-springboot-app"
           },
-          "depth": 1
+          "depth": 3
         }
       ]
     }
