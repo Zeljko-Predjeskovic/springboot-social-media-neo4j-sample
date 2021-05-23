@@ -4,6 +4,9 @@
  * by Zeljko Predjeskovic
  * 
  * May 23, 2021
+ * 
+ * check out the code:
+ * https://github.com/Zeljko-Predjeskovic/springboot-social-media
  *
  * ### Introduction
  *
@@ -19,20 +22,20 @@
  * Working my first time with Neo4j, a nosql graph database I am really excited.
  * My plans and topics are:
  *
- * - A-Neo4j and its connection
+ * - Neo4j and its connection
  * 
- * - B-Object Mapping
+ * - Object Mapping
  * 
- * - C-Repositories
+ * - Repositories
  * 
- * - D-Service
+ * - Service
  * 
- * - E-Presentation/Controller
+ * - Presentation/Controller
  * 
- * - F-Security
+ * - Security
  * 
- * - G-Web/Controller
+ * - Web/Controller
  *
  * I will talk about each one of this section on how I write the code, What
- * problems do I have and how am I solving them and of course a bit of theory.
+ * problems do I have, how am I solving them and of course a bit of theory.
  */
