@@ -27,7 +27,7 @@
  * In this project we use lombok to save some lines of code.
  * So stuff like *@ToString, @Getter, @Setter,* are just genaretig some methods.
  * Sometimes it is necessary to still write it yourself. For example
- * if i have a class that has a realtionship with itself, the generated
+ * if i have a class that has a relationship with itself, the generated
  * ToString could get recursive and get you a overflow exception.
  *
  */
@@ -82,7 +82,7 @@ public class PersonNode extends Persistable{
 
     /**
      *  Annotation *@Relationship* creates a relationship. In this case the
-     *  relation is "FOLLOWS". In default the reation arrow will point to the
+     *  relation is "FOLLOWS". In default the relation arrow will point to the
      *  friend Node.
      */
     @Nullable @Getter
