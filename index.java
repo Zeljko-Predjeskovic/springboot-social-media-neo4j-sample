@@ -22,19 +22,22 @@
  * Working my first time with Neo4j, a nosql graph database I am really excited.
  * My plans and topics are:
  *
- * - Neo4j and its connection
+ * - Spring data Neo4j: What is Neo4j and how to connect it with xour app
  * 
- * - Object Mapping
+ * - Object Mapping: How do i map my classes into objects and its relations
  * 
- * - Repositories
+ * - Persistence: Transporting and fetching data from the database with Neo4j
+ * repository
  * 
- * - Service
+ * - Service:
  * 
- * - Presentation/Controller
+ * - Presentation/Controller: Building the routes for the rest api
  * 
- * - Security
+ * - Web/Controller: Building a server side rendered web ui
  * 
- * - Web/Controller
+ * - Security: Authentication and authorization with spring security
+ * 
+ * - Other small try outs like: trying to run the app on docker
  *
  * I will talk about each one of this section on how I write the code, What
  * problems do I have, how am I solving them and of course a bit of theory.
