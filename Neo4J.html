@@ -1,30 +1,33 @@
-<!DOCTYPE html><html lang="en"><head><title>Neo4J</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="Neo4J"><meta name="groc-project-path" content="Neo4J.java"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path">Neo4J.java</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="spring-boot-neo4j">Spring boot Neo4J</h1>
+<!DOCTYPE html><html lang="en"><head><title>Neo4J</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="Neo4J"><meta name="groc-project-path" content="Neo4J.java"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path">Neo4J.java</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="spring-data-neo4j">Spring data Neo4J</h1>
 <p>The first thing to ask, if we want to build an application is, which database
 do we want to use?</p>
 <p>My decision felt on Neo4j and there is plenty of reasons why. Neo4j is a
 database that stores the data in a graph structure instead of tables.</p>
-<p>It has great performance thanks to their fast queries which can be useful
-for lots of data since we are making a social media model.
-Another great reason to use Neo4j are the relations.
-Perfect for our use case we can define complex relations and still be flexible.</p>
+<p>It has great performance thanks to their fast queries which can be useful for
+lots of data since we are making a social media model. Another great reason
+to use Neo4j are the relations. Perfect for our use case we can define
+complex relations and still be flexible.</p>
 <h3 id="neo4j-installation-and-setup">Neo4j installation and setup</h3>
-<p>Browse for Neo4j community edition and install the desktop version.
-You have to expose some of your personal information and accept the license but thats nothing new.</p>
+<p>Browse for Neo4j community edition and install the desktop version. You have
+to expose some of your personal information and accept the license but thats
+nothing new.</p>
 <p>After the installation open neo4j desktop. It should look like this:</p>
 <p>You could just use some HTML in your Markdown:</p>
 <p><img src="./images/neo4jdesktop.PNG" alt="n4jdesktop" width="450px"/></p>
-<p>The Movie Database is a default one. You can start it to explore a little of the graph db environment.
-Hover over your database and click on start.
-You can choose how to open the db, I am using the browser.
-The default username is &quot;neo4j&quot; and password is &quot;secret&quot;. You can go on details and change the password.</p>
-<p>If you are done with the exploration, you can create a new empty database.
-We will use this one for our connection to our spring boot app</p>
-<h3 id="connection-with-springboot-app">Connection with springboot app</h3>
+<p>The Movie Database is a default one. You can start it to explore a little of
+the graph db environment. Hover over your database and click on start. You
+can choose how to open the db, I am using the browser. The default username
+is &quot;neo4j&quot; and password is &quot;secret&quot;. You can go on details and change the
+password.</p>
+<p>If you are done with the exploration, you can create a new empty database. We
+will use this one for our connection to our spring boot app</p>
+<h3 id="connect-with-springboot-app">Connect with springboot app</h3>
 <p>Define your Neo4j connection in src/main/resources/application.properties</p>
-<pre><code>spring.data.neo4j.uri=bolt://localhost:7687 // your connection path
-spring.data.neo4j.username=neo4j            // database username
-spring.data.neo4j.password=secret           // database password</code></pre>
-<p>The value written in this example is the default connection. You actually don&#39;t have to write anything if you
-use a default connection. Notice that Neo4j uses a <a href="https://en.wikipedia.org/wiki/Bolt_(network_protocol">Bolt</a>)
+<p>spring.data.neo4j.uri=bolt://localhost:7687 // your connection path
+spring.data.neo4j.username=neo4j // database username
+spring.data.neo4j.password=secret // database password</p>
+<p>The value written in this example is the default connection. You actually
+don&#39;t have to write anything if you use a default connection. Notice that
+Neo4j uses a <a href="https://en.wikipedia.org/wiki/Bolt_(network_protocol">Bolt</a>)
 network protocol to connect. It will not acceptt a http connection.</p>
 <p>Let&#39;s get started with some coding</p></div></div></div></div></body></html>

@@ -40,57 +40,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         "projectPath": "Neo4J.java",
         "targetPath": "Neo4J",
         "pageTitle": "Neo4J",
-        "firstHeader": {
-          "type": "heading",
-          "data": {
-            "level": 1,
-            "title": "Spring boot Neo4J",
-            "slug": "spring-boot-neo4j",
-            "isFileHeader": true
-          },
-          "depth": 1,
-          "children": [
-            {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "Neo4j installation and setup",
-                "slug": "neo4j-installation-and-setup"
-              },
-              "depth": 3
-            }, {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "Connection with springboot app",
-                "slug": "connection-with-springboot-app"
-              },
-              "depth": 3
-            }
-          ]
-        },
-        "title": "Spring boot Neo4J"
+        "title": "Neo4J"
       },
-      "depth": 1,
-      "outline": [
-        {
-          "type": "heading",
-          "data": {
-            "level": 3,
-            "title": "Neo4j installation and setup",
-            "slug": "neo4j-installation-and-setup"
-          },
-          "depth": 3
-        }, {
-          "type": "heading",
-          "data": {
-            "level": 3,
-            "title": "Connection with springboot app",
-            "slug": "connection-with-springboot-app"
-          },
-          "depth": 3
-        }
-      ]
+      "depth": 1
     }
   ];
 
