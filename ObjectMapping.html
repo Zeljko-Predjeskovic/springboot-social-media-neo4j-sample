@@ -17,9 +17,8 @@ if i have a class that has a realtionship with itself, the generated
 ToString could get recursive and get you a overflow exception.</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>A persistable class where we give every node and relation class an Id.</p></div></div><div class="code"><div class="wrapper"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Persistable</span> </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>The Id is needed for the neo4j driver. It will not work without it.
 You can define an Id with the <em>@Id</em> annotation and
 the <em>@GeneratedValue</em> will automatically generate an Id with the type Long in the database.
-Default it generates the next available number.
-You can change your key generation for example: @GeneratedValue(UUIDStringGenerator.class)</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Id</span> <span class="hljs-annotation">@GeneratedValue</span>
-    <span class="hljs-keyword">private</span> Long id;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>You can change your key generation for example:</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Id</span> <span class="hljs-annotation">@GeneratedValue</span>(UUIDStringGenerator.class)
+Default generates the next available number.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Id</span> <span class="hljs-annotation">@GeneratedValue</span>
+    <span class="hljs-keyword">private</span> Long id;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>You can change your key generation for example into a UUID:</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Id</span> <span class="hljs-annotation">@GeneratedValue</span>(UUIDStringGenerator.class)
     <span class="hljs-keyword">private</span> String id;
 
         --equals,getter,setter--

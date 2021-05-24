@@ -41,14 +41,13 @@ public class Persistable {
      * The Id is needed for the neo4j driver. It will not work without it.
      * You can define an Id with the *@Id* annotation and
      * the *@GeneratedValue* will automatically generate an Id with the type Long in the database.
-     * Default it generates the next available number.
-     * You can change your key generation for example: @GeneratedValue(UUIDStringGenerator.class)
+     * Default generates the next available number.
      */
     @Id @GeneratedValue
     private Long id;
 
     /**
-     * You can change your key generation for example:
+     * You can change your key generation for example into a UUID:
      */
     @Id @GeneratedValue(UUIDStringGenerator.class)
     private String id;
