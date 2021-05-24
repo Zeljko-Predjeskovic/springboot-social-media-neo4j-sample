@@ -23,9 +23,9 @@ password.</p>
 will use this one for our connection to our spring boot app</p>
 <h3 id="connect-with-springboot-app">Connect with springboot app</h3>
 <p>Define your Neo4j connection in src/main/resources/application.properties</p>
-<p>spring.data.neo4j.uri=bolt://localhost:7687 // your connection path
-spring.data.neo4j.username=neo4j // database username
-spring.data.neo4j.password=secret // database password</p>
+<pre><code> spring.data.neo4j.uri=bolt://localhost:7687 // your connection path
+ spring.data.neo4j.username=neo4j // database username
+ spring.data.neo4j.password=secret // database password</code></pre>
 <p>The value written in this example is the default connection. You actually
 don&#39;t have to write anything if you use a default connection. Notice that
 Neo4j uses a <a href="https://en.wikipedia.org/wiki/Bolt_(network_protocol">Bolt</a>)

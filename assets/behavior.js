@@ -21,57 +21,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         "projectPath": "index.java",
         "targetPath": "index",
         "pageTitle": "index",
-        "firstHeader": {
-          "type": "heading",
-          "data": {
-            "level": 1,
-            "title": "Social media api",
-            "slug": "social-media-api",
-            "isFileHeader": true
-          },
-          "depth": 1,
-          "children": [
-            {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "Introduction",
-                "slug": "introduction"
-              },
-              "depth": 3
-            }, {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "Overview",
-                "slug": "overview"
-              },
-              "depth": 3
-            }
-          ]
-        },
-        "title": "Social media api"
+        "title": "index"
       },
-      "depth": 1,
-      "outline": [
-        {
-          "type": "heading",
-          "data": {
-            "level": 3,
-            "title": "Introduction",
-            "slug": "introduction"
-          },
-          "depth": 3
-        }, {
-          "type": "heading",
-          "data": {
-            "level": 3,
-            "title": "Overview",
-            "slug": "overview"
-          },
-          "depth": 3
-        }
-      ]
+      "depth": 1
     }, {
       "type": "file",
       "data": {
@@ -91,6 +43,105 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         "title": "Neo4J"
       },
       "depth": 1
+    }, {
+      "type": "file",
+      "data": {
+        "language": {
+          "nameMatchers": [".java"],
+          "pygmentsLexer": "java",
+          "multiLineComment": ["/*", "*", "*/"],
+          "singleLineComment": ["//"],
+          "ignorePrefix": "}",
+          "foldPrefix": "^",
+          "name": "Java"
+        },
+        "sourcePath": "C:\\Users\\Zeljko Predjeskovic\\Desktop\\docs\\ObjectMapping.java",
+        "projectPath": "ObjectMapping.java",
+        "targetPath": "ObjectMapping",
+        "pageTitle": "ObjectMapping",
+        "firstHeader": {
+          "type": "heading",
+          "data": {
+            "level": 1,
+            "title": "Object Mapping",
+            "slug": "object-mapping",
+            "isFileHeader": true
+          },
+          "depth": 1,
+          "children": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Example of a Graph model:",
+                "slug": "example-of-a-graph-model"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Id and Generated value",
+                "slug": "id-and-generated-value"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Node entities and relations",
+                "slug": "node-entities-and-relations"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Relations with properties",
+                "slug": "relations-with-properties"
+              },
+              "depth": 3
+            }
+          ]
+        },
+        "title": "Object Mapping"
+      },
+      "depth": 1,
+      "outline": [
+        {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "Example of a Graph model:",
+            "slug": "example-of-a-graph-model"
+          },
+          "depth": 3
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "Id and Generated value",
+            "slug": "id-and-generated-value"
+          },
+          "depth": 3
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "Node entities and relations",
+            "slug": "node-entities-and-relations"
+          },
+          "depth": 3
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "Relations with properties",
+            "slug": "relations-with-properties"
+          },
+          "depth": 3
+        }
+      ]
     }
   ];
 

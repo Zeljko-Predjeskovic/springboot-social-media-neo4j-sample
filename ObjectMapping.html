@@ -1,0 +1,83 @@
+<!DOCTYPE html><html lang="en"><head><title>ObjectMapping</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="ObjectMapping"><meta name="groc-project-path" content="ObjectMapping.java"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path">ObjectMapping.java</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="object-mapping">Object Mapping</h1>
+<p>To convert models between the database and domain easier, we are using
+the object mapping technike. It prevents inserting same models with different
+bulding blocks.</p>
+<h3 id="example-of-a-graph-model">Example of a Graph model:</h3>
+<p>We are mapping our objects in a graph.
+The colored circles are the nodes.
+The nodes are connected with arrows which are the relations.
+Nodes can also be seen as entities and will be coded as java classes
+while the relations are associated attributes where the object is the target
+node.</p>
+<p><img src="./images/graphDia.png" alt="graphImage" width="450px"/></p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="id-and-generated-value">Id and Generated value</h3>
+<p>In this project we use lombok to save some lines of code.
+So stuff like <em>@ToString, @Getter, @Setter,</em> are just genaretig some methods.
+Sometimes it is necessary to still write it yourself. For example
+if i have a class that has a realtionship with itself, the generated
+ToString could get recursive and get you a overflow exception.</p></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>A persistable class where we give every node and relation class an Id.</p></div></div><div class="code"><div class="wrapper"><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Persistable</span> </span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>The Id is needed for the neo4j driver. It will not work without it.
+You can define an Id with the <em>@Id</em> annotation and
+the <em>@GeneratedValue</em> will automatically generate an Id with the type Long in the database.
+Default it generates the next available number.
+You can change your key generation for example: @GeneratedValue(UUIDStringGenerator.class)</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Id</span> <span class="hljs-annotation">@GeneratedValue</span>
+    <span class="hljs-keyword">private</span> Long id;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>You can change your key generation for example:</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Id</span> <span class="hljs-annotation">@GeneratedValue</span>(UUIDStringGenerator.class)
+    <span class="hljs-keyword">private</span> String id;
+
+        --equals,getter,setter--
+    }
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="node-entities-and-relations">Node entities and relations</h3></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Annotion <em>@Node</em> defines the class as a node. In this scenario, the class
+is a node named &quot;Person&quot;</p></div></div><div class="code"><div class="wrapper"><span class="hljs-annotation">@Node</span>(<span class="hljs-string">"Person"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PersonNode</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Persistable</span></span>{</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>The Person node hast two properties: username and email.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Property</span>(<span class="hljs-string">"username"</span>)
+    <span class="hljs-annotation">@Getter</span> <span class="hljs-annotation">@Setter</span>
+    <span class="hljs-keyword">private</span> String username;
+
+    <span class="hljs-annotation">@Property</span>(<span class="hljs-string">"email"</span>)
+    <span class="hljs-annotation">@Getter</span> <span class="hljs-annotation">@Setter</span>
+    <span class="hljs-keyword">private</span> String email;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p> Annotation <em>@Relationship</em> creates a relationship. In this case the
+ relation is &quot;FOLLOWS&quot;. In default the reation arrow will point to the
+ friend Node.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Nullable</span> <span class="hljs-annotation">@Getter</span>
+    <span class="hljs-annotation">@Relationship</span>(type = <span class="hljs-string">"FOLLOWS"</span>)
+    <span class="hljs-keyword">private</span> List&lt;PersonNode&gt; friends;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>You can adjust the arrow pointing like in this annotaion.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Relationship</span>(type = <span class="hljs-string">"FOLLOWS"</span>, direction = Relationship.Direction.INCOMING)</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Add method for the List of the friends the person follows</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">friendsWith</span><span class="hljs-params">(PersonNode friend)</span> </span>{
+        <span class="hljs-keyword">if</span> (friends == <span class="hljs-keyword">null</span>) {
+            friends = <span class="hljs-keyword">new</span> ArrayList&lt;PersonNode&gt;();
+        }
+        friends.add(friend);
+    }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Neo4j driver needs a no parameter constructor. Lombok generated sadly does not work</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">PersonNode</span><span class="hljs-params">()</span> </span>{ }
+
+        --ArgsConstructors,Equal and HaschCode, ToString--
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="relations-with-properties">Relations with properties</h3></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p><em>@RelationshipProperties</em> can make a class into a relation with properties</p></div></div><div class="code"><div class="wrapper"><span class="hljs-annotation">@RelationshipProperties</span>
+<span class="hljs-annotation">@ToString</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FriendRelation</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Persistable</span></span>{
+
+    <span class="hljs-annotation">@Property</span> <span class="hljs-annotation">@Getter</span>
+    <span class="hljs-keyword">private</span> LocalDate friendSince;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p><em>@TargetNode</em> the node where the relation will point to.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@TargetNode</span> <span class="hljs-annotation">@Getter</span>
+    <span class="hljs-keyword">private</span> PersonNode person;
+
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">FriendRelation</span><span class="hljs-params">()</span></span>{  }
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FriendRelation</span><span class="hljs-params">(LocalDate friendSince, PersonNode person)</span></span>{
+
+}
+
+<span class="hljs-annotation">@Node</span>(<span class="hljs-string">"Person"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PersonNode</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Persistable</span></span>{
+
+    --properties--</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Make the friend relation as a List of the FriendRelation class</p>
+<p>The output of this relation would look like this:</p>
+<p><img src="./images/graphDia2.png" alt="graphImage2"/></p>
+<p>The cool thing about that is, that the FOLLOWS relation stores data too
+so that the person does not have to save a mass of data.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Nullable</span> <span class="hljs-annotation">@Getter</span>
+    <span class="hljs-annotation">@Relationship</span>(type = <span class="hljs-string">"FOLLOWS"</span>)
+    <span class="hljs-keyword">private</span> List&lt;FriendRelation&gt; friends;
+
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">friendsWith</span><span class="hljs-params">(FriendRelation friend)</span> </span>{
+        <span class="hljs-keyword">if</span> (friends == <span class="hljs-keyword">null</span>) {
+            friends = <span class="hljs-keyword">new</span> ArrayList&lt;FriendRelation&gt;();
+        }
+        friends.add(friend);
+    }
+
+        --NoArgsConstructor,ArgsConstructors,Equal and HaschCode, ToString--
+}
+
+
+}</div></div></div></div></body></html>
