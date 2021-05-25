@@ -36,13 +36,13 @@ public class PersonNode extends Persistable{
 
     @Nullable @Getter
     @Relationship(type = "FOLLOWS")
-    private List<FriendRelation> friends;
+    private List<FollowRelation> follows;
 
-    public void friendsWith(FriendRelation friend) {
-        if (friends == null) {
-            friends = new ArrayList<FriendRelation>();
+    public void followsPerson(FollowRelation followedPerson) {
+        if (follows == null) {
+            follows = new ArrayList<FollowRelation>();
         }
-        friends.add(friend);
+        follows.add(followedPerson);
     }
 
     @Nullable @Getter
@@ -103,9 +103,8 @@ public class PersonNode extends Persistable{
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        if (!super.equals(o)) return false;
         PersonNode that = (PersonNode) o;
-        return username.equals(that.username) && email.equals(that.email);
+        return username.equals(that.username) || email.equals(that.email);
     }
 
     @Override

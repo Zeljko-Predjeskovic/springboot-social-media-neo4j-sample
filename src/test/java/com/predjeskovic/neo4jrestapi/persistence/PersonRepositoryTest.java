@@ -30,7 +30,7 @@ public class PersonRepositoryTest {
     private PersonNode person2;
 
     @BeforeAll
-    public void initbefore(){
+    public void initBefore(){
         person = PersonNode.builder()
                 .firstName("Zeljko")
                 .lastName("Predjeskovic")
@@ -58,66 +58,68 @@ public class PersonRepositoryTest {
 
     @Test
     @Order(1)
-    public void insertPersons(){
-        Assertions.assertTrue(personRepository.save(person)!=null && personRepository.save(person2)!=null);
+    public void insertPerson(){
+        try {
+            Assertions.assertTrue(personRepository.save(person) != null && personRepository.save(person2) != null);
+        }
+        catch (Exception e) {
+            throw new RuntimeException("Insert test failed",e);
+        }
     }
 
     @Test
     @Order(2)
-    public void findAll(){
-        var persons = personRepository.findAll();
+    public void findAllPerson(){
+        var people = personRepository.findAllPeople();
 
-        Assertions.assertTrue(!persons.isEmpty() && persons!=null);
+        System.out.printf(""+people);
+
+        Assertions.assertTrue(!people.isEmpty() && people!=null);
     }
 
+    @Test
     @Order(3)
+    public void findByUsername(){
+        var personX = personRepository.findByUsername("yatotoast");
+
+        Assertions.assertTrue(personX!=null && personX.getId()!=null);
+    }
+
+    @Order(4)
     @Test
     public void addRelationBetweenTwoPersons(){
        var personX = personRepository.findByUsername("yatotoast");
        var personY = personRepository.findByUsername("Nyumisa");
 
-       person.friendsWith(FriendRelation.builder()
-               .friendSince(LocalDate.of(2016,2,26))
+        System.out.println(personX.getId());
+        System.out.println(personY.getId());
+
+       personX.followsPerson(FollowRelation.builder()
+               .followsSince(LocalDate.of(2016,2,26))
                .person(personY)
                .build());
 
-       Assertions.assertTrue(personRepository.save(personX)!=null);
+        personRepository.save(personX);
 
-       person2.friendsWith(FriendRelation.builder()
-               .friendSince(LocalDate.of(2016,2,26))
-               .person(personX)
-               .build());
-
-       Assertions.assertTrue(personRepository.save(personY)!=null);
-
-
-
-    }
-
-    @Order(4)
-    @Test
-    public void createAndLikeCommentPost(){
-        var personX = personRepository.findByUsername("yatotoast");
-        var personY = personRepository.findByUsername("Nyumisa");
-        PostNode post = PostNode.builder()
-                .description("Look at my cute little kitty")
-                .image("cat.png")
-                .cityLocation("Berlin")
-                .tags("cat,cute,adorable")
-                .build();
-
-        personX.posted(post);
-
-        Assertions.assertTrue(personRepository.save(personX)!=null);
-
-        personY.postLiked(post); //should fail. we have to take the post from the db since the id will be null until the db generates it
-        personY.commentedOn(CommentRelation.builder()
-                .post(post)
-                .commentedOn(LocalDate.now())
-                .comment("Soooo cuuute >.<")
+        personY.followsPerson(FollowRelation.builder()
+                .followsSince(LocalDate.of(2016,2,26))
+                .person(personX)
                 .build());
 
-        Assertions.assertTrue(personRepository.save(personY)!=null);
+        personRepository.save(personY);
+
     }
 
+    @Order(5)
+    @Test
+    public void findAllFollowRelations(){
+
+    }
+
+  /*  @Order(6)
+    @Test
+    public void createAndLikeCommentPost(){
+
+    }
+*/
 }

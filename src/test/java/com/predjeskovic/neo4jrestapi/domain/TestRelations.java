@@ -42,13 +42,13 @@ public class TestRelations {
 
     @Test
     void verifyFollowRelation(){
-        person.friendsWith(FriendRelation.builder()
-                .friendSince(LocalDate.now())
+        person.followsPerson(FollowRelation.builder()
+                .followsSince(LocalDate.now())
                 .person(person2)
                 .build());
 
-        Assertions.assertTrue(person.getFriends()!=null);
-        Assertions.assertTrue(person2.getFriends()==null);
+        Assertions.assertTrue(person.getFollows()!=null);
+        Assertions.assertTrue(person2.getFollows()==null);
     }
 
     @Test

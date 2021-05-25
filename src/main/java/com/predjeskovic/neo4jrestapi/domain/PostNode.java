@@ -32,14 +32,6 @@ public class PostNode extends Persistable{
     @Nullable @Getter @Setter
     private String tags;
 
-    @Relationship(type="LIKES", direction = Relationship.Direction.INCOMING)
-    @Getter @Nullable
-    private List<PersonNode> personsLiked;
-
-    @Relationship(value = "COMMENTED_ON", direction = Relationship.Direction.INCOMING)
-    @Getter @Nullable
-    private List<CommentRelation> comments;
-
     @Builder
     public PostNode(String description, String cityLocation, String image, String tags){
         this.description = description;

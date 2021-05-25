@@ -42,6 +42,27 @@ public class TestNodes {
     }
 
     @Test
+    void verifyNotSamePersonNode(){
+        var person = PersonNode.builder()
+                .firstName("Zeljko")
+                .lastName("Predjeskovic")
+                .email("zepr2022000@gmail.com")
+                .username("yatotoast")
+                .profile(new ProfileNode("img.png","Hello World"))
+                .build();
+
+        var person2 = PersonNode.builder()
+                .firstName("Zeljko")
+                .lastName("Predjeskovic")
+                .email("xyz@gmail.com")
+                .username("notYatotoast")
+                .profile(new ProfileNode("img.png","Hello World"))
+                .build();
+
+        Assertions.assertTrue(!person.equals(person2));
+    }
+
+    @Test
     void verifyNewPostNode(){
         var post = PostNode.builder()
                 .cityLocation("Vienna")
