@@ -1,8 +1,6 @@
 package com.predjeskovic.neo4jrestapi.domain;
 
-
 import lombok.Builder;
-import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Property;
