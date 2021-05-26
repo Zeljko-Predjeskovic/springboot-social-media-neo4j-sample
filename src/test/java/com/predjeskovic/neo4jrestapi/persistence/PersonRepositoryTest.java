@@ -63,7 +63,7 @@ public class PersonRepositoryTest {
             Assertions.assertTrue(personRepository.save(person) != null && personRepository.save(person2) != null);
         }
         catch (Exception e) {
-            throw new RuntimeException("Insert test failed",e);
+            throw new RuntimeException("InsertPerson test failed",e);
         }
     }
 
@@ -71,8 +71,6 @@ public class PersonRepositoryTest {
     @Order(2)
     public void findAllPerson(){
         var people = personRepository.findAllPeople();
-
-        System.out.printf(""+people);
 
         Assertions.assertTrue(!people.isEmpty() && people!=null);
     }
@@ -91,35 +89,36 @@ public class PersonRepositoryTest {
        var personX = personRepository.findByUsername("yatotoast");
        var personY = personRepository.findByUsername("Nyumisa");
 
-        System.out.println(personX.getId());
-        System.out.println(personY.getId());
+        try {
+            personX.followsPerson(FollowRelation.builder()
+                    .followsSince(LocalDate.of(2016, 2, 26))
+                    .person(personY)
+                    .build());
 
-       personX.followsPerson(FollowRelation.builder()
-               .followsSince(LocalDate.of(2016,2,26))
-               .person(personY)
-               .build());
-
-        personRepository.save(personX);
-
-        personY.followsPerson(FollowRelation.builder()
-                .followsSince(LocalDate.of(2016,2,26))
-                .person(personX)
-                .build());
-
-        personRepository.save(personY);
-
+            Assertions.assertTrue(personRepository.save(personX) != null);
+        }
+        catch (Exception e){
+            throw new RuntimeException("AddRelationBetweenTwoPersons failed",e);
+        }
     }
+
 
     @Order(5)
     @Test
-    public void findAllFollowRelations(){
+    public void personCreatePost() {
+        var personX = personRepository.findByUsername("yatotoast");
 
+        personX.posted(PostNode.builder()
+                .cityLocation("Vienna")
+                .tags("lol,Wien,meme")
+                .description("Chillin with ma bois")
+                .image("image.png")
+                .build());
+
+        personRepository.save(personX);
+
+        var erg = personRepository.findByUsername("yatotoast").getPosts();
+
+        Assertions.assertTrue(erg != null && !erg.isEmpty());
     }
-
-  /*  @Order(6)
-    @Test
-    public void createAndLikeCommentPost(){
-
-    }
-*/
 }
