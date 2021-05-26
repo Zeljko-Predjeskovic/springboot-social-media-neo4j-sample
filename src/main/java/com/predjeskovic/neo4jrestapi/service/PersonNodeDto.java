@@ -1,5 +1,7 @@
 package com.predjeskovic.neo4jrestapi.service;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.predjeskovic.neo4jrestapi.domain.PersonNode;
 import com.predjeskovic.neo4jrestapi.domain.ProfileNode;
 
@@ -60,6 +62,16 @@ public class PersonNodeDto {
         personR.setId(person.getId());
 
         return personR;
+    }
+
+    @JsonCreator(mode=JsonCreator.Mode.PROPERTIES)
+    public static PersonNodeDto fromJsonAttributes(
+            @JsonProperty("firstName") String firstName,
+            @JsonProperty("lastName") String lastName,
+            @JsonProperty("username") String username,
+            @JsonProperty("email") String email,
+            @JsonProperty("profile") ProfileNode profile){
+        return new PersonNodeDto(null,firstName,lastName,username,email,profile);
     }
 
 }
