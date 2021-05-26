@@ -95,6 +95,7 @@ public class PersonRepositoryTest {
                     .person(personY)
                     .build());
 
+
             Assertions.assertTrue(personRepository.save(personX) != null);
         }
         catch (Exception e){

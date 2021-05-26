@@ -8,9 +8,9 @@ import org.springframework.lang.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Node("Person")
-@ToString
 public class PersonNode extends Persistable{
 
     private PersonNode() { }
@@ -111,6 +111,27 @@ public class PersonNode extends Persistable{
     @Override
     public int hashCode() {
         return Objects.hash(username, email);
+    }
+
+
+    @Override
+    public String toString() {
+        //showing the usernames by the followers
+        // prevents recursive toString
+        List<String> str = follows.stream().map(f-> f.getPerson().getUsername()).collect(Collectors.toList());
+
+        return "PersonNode{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", profile=" + profile +
+                ", follows=" + str +
+                ", commentedOn=" + commentedOn +
+                ", posts=" + posts +
+                ", advertisements=" + advertisements +
+                ", postsLiked=" + postsLiked +
+                '}';
     }
 }
 
