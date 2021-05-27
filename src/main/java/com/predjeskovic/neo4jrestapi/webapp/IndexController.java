@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class IndexController {
 
     @RequestMapping("/")
-    public String index(Model modes) {
+    public String index(Model model) {
         return "index.html";
     }
+
 }

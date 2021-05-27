@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="header">
     <meta charset="UTF-8">
     <title>Social Media - People</title>
     <!-- CSS only -->
@@ -10,42 +10,42 @@
 
 </head>
 <body style="background-color: #1b59b5; color: aliceblue">
-    <nav class="navbar justify-content-center" style="background-color:aliceblue; color: #1b59b5">
-            <ul class="nav justify-content-center">
-                <li class="nav-item"> <a class="nav-link" href="#"><b>Home</b></a></li>
-                <li class="nav-item"> <a class="nav-link" href="#"><b>Get started</b></a></li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/Zeljko-Predjeskovic/springboot-social-media">
-                        <b>View Code</b>
+    <div th:fragment="menu">
+        <nav class="navbar justify-content-center" style="background-color:aliceblue; color: #1b59b5">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item"> <a class="nav-link" href="/"><b>Home</b></a></li>
+                    <li class="nav-item"> <a class="nav-link" href="/start"><b>Get started</b></a></li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Zeljko-Predjeskovic/springboot-social-media">
+                            <b>View Code</b>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://zeljko-predjeskovic.github.io/springboot-social-media/">
+                        <b>Documentation</b>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="https://zeljko-predjeskovic.github.io/springboot-social-media/">
-                    <b>Documentation</b>
-                </a>
-                </li>
-                <li class="nav-item"> <a class="nav-link" href="#"><b>About</b></a></li>
-            </ul>
-    </nav>
-    <div class="container" style="margin-top: 5%">
-        <div class="row">
-                    <h1>Just design your own website and</h1>
-                <h1>Create a social media with:</h1>
-            <div class="col-sm-3">
-                <h1 style="background-color:aliceblue; color: #1b59b5; border-radius: 5px;">Social Media API</h1>
-            </div>
-            <h4>Build a quick social media platform with the help of the social media API.</h4>
-        </div>
-        <div style="margin-top: 5%">
-            <div class="row">
-                <div class="col-sm-2">
-                    <button type="button" class="btn btn-light">Get Started</button>
-                </div>
-                <div class="col-sm-2">
-                    <button type="button" class="btn btn-light">View Code</button>
-                </div>
-            </div>
-        </div>
+                    </li>
+                    <li class="nav-item"> <a class="nav-link" href="#"><b>About</b></a></li>
+                </ul>
+        </nav>
     </div>
+        <div class="container" style="margin-top: 11%">
+            <div class="row">
+                        <h1>Just design your own website and</h1>
+                    <h1>Create a social media with:</h1>
+                <div class="col-sm-3">
+                    <h1 style="background-color:aliceblue; color: #1b59b5; border-radius: 5px;">Social Media API</h1>
+                </div>
+                <h4>Build a quick social media platform with the help of the social media API.</h4>
+            </div>
+            <div style="margin-top: 5%">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-light" style="color: #1b59b5" onclick="window.location.href='/start'"><b>Get Started</b></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<div th:fragment="person"></div>
 </body>
 </html>
