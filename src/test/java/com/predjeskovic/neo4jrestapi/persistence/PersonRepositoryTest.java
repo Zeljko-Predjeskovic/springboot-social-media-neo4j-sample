@@ -83,7 +83,7 @@ public class PersonRepositoryTest {
         Assertions.assertTrue(personX!=null && personX.getId()!=null);
     }
 
-    @Order(4)
+/*    @Order(4)
     @Test
     public void addRelationBetweenTwoPersons(){
        var personX = personRepository.findByUsername("yatotoast");
@@ -104,7 +104,7 @@ public class PersonRepositoryTest {
             throw new RuntimeException("AddRelationBetweenTwoPersons failed",e);
         }
     }
-
+*/
 
     @Order(5)
     @Test
