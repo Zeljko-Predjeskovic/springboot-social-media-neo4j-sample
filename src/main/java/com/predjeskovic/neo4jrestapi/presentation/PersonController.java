@@ -4,10 +4,7 @@ import com.predjeskovic.neo4jrestapi.service.PersonNodeDto;
 import com.predjeskovic.neo4jrestapi.service.PersonService;
 import lombok.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,10 +26,24 @@ public class PersonController {
         return personService.findAll();
     }
 
-    @GetMapping("/{username}")
+    @GetMapping(path = "/{username}")
     public PersonNodeDto findOne(@PathVariable @NonNull String username){
         return  personService.findOne(username);
     }
 
+    @PostMapping
+    public PersonNodeDto insert(@RequestBody PersonNodeDto person){
+        return personService.insert(person);
+    }
+
+    @PutMapping("/{username}")
+    public PersonNodeDto replace(@PathVariable String username, @RequestBody PersonNodeDto person){
+        return personService.replace(username, person);
+    }
+
+    @DeleteMapping("/{username}")
+    public void delete(@PathVariable String username){
+        personService.delete(username);
+    }
 
 }
