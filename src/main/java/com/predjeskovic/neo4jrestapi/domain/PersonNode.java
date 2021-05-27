@@ -13,8 +13,6 @@ import java.util.stream.Collectors;
 @Node("Person")
 public class PersonNode extends Persistable{
 
-    private PersonNode() { }
-
     @Property("firstName")
     @Getter @Setter
     private String firstName;
@@ -90,6 +88,8 @@ public class PersonNode extends Persistable{
         }
             postsLiked.add(post);
     }
+
+    private PersonNode() { }
 
     @Builder
     public PersonNode(String firstName, String lastName, String username, String email, ProfileNode profile) {

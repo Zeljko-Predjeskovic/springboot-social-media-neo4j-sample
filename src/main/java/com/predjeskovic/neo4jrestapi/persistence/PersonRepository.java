@@ -6,6 +6,7 @@ import org.springframework.data.neo4j.repository.query.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -16,7 +17,11 @@ public interface PersonRepository extends Neo4jRepository<PersonNode,Long> {
 
     PersonNode findByUsername(String username);
 
+    Optional<PersonNode> findOneByUsername(String username);
+
     @Query("MATCH (n:Person {username: $username}) RETURN n")
     PersonNode findByUsernameCustom(String username);
+
+    void deleteById(Long id);
 
 }

@@ -89,7 +89,9 @@ public class PersonRepositoryTest {
        var personX = personRepository.findByUsername("yatotoast");
        var personY = personRepository.findByUsername("Nyumisa");
 
+
         try {
+
             personX.followsPerson(FollowRelation.builder()
                     .followsSince(LocalDate.of(2016, 2, 26))
                     .person(personY)
