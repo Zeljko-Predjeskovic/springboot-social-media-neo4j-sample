@@ -14,6 +14,7 @@ import java.time.LocalDate;
 @ToString
 public class FollowRelation extends Persistable{
 
+
     @Property("followsSince")
     @Getter
     private LocalDate followsSince;

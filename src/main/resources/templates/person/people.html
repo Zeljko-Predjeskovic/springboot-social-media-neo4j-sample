@@ -31,8 +31,12 @@
             <td><span th:id="username" th:text="${person.getUsername()}"></span></td>
             <td><span th:text="${person.getEmail()}"></span></td>
             <td>|</td>
-            <td><a href="/web/details" style="color: black">details</a></td>
-            <td><a href="/people/{#username}" style="color: black">delete</a></td>
+            <td>
+                <a th:href="@{/web/people/detail/(username=${person.getUsername()})}" style="color: black">
+                    details</a>
+            </td>
+            <td><a th:href="@{/web/people/delete/(username=${person.getUsername()})}" style="color: black">
+                delete</a></td>
         </tr>
         </tbody>
     </table>

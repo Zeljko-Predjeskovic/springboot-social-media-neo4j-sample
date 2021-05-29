@@ -10,7 +10,7 @@
         <div class="col-sm-2"></div>
 
         <div class="col-sm-8 align-items-center">
-            <h1 style="margin-top: 5%; margin-bottom: 5%">Detail of Person:</h1>
+            <h1 style="margin-top: 5%; margin-bottom: 5%">Are you sure you want to delete this person?</h1>
 
             <table class="table" style="color: aliceblue">
                 <tbody>
@@ -33,10 +33,9 @@
                 </tbody>
             </table>
 
-            <div style="margin-top: 7%">
-                <a type="button" class="btn btn-light"
-                   th:href="@{/web/people/edit/(username=${person.getUsername()})}" style="color: black">Edit Person</a>
-            </div>
+                <a th:href="@{/web/people/deleteAction/(username=${person.getUsername()})}"
+                   class="btn btn-light"style="color: black">yes</a>
+            <a class="btn btn-light" href="/web/people" style="color: black">no</a>
         </div>
     </div>
     <div class="col-sm-2"></div>
