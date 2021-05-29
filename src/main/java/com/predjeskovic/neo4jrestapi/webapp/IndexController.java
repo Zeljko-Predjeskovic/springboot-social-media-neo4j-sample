@@ -21,7 +21,15 @@ public class IndexController {
     }
 
     @GetMapping("/login")
-    public String Login(){
+    public String login(){
         return "login.html";
     }
+
+    @GetMapping("/myLogin")
+    public String myLogin(){
+        return "login.html";
+    }
+
+
+
 }

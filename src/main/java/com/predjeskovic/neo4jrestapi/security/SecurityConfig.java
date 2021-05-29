@@ -12,21 +12,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http
-                .authorizeRequests()
-                .antMatchers(HttpMethod.GET,"/people/*").permitAll()
-                .antMatchers(HttpMethod.POST,"/people**").permitAll()
+        http.authorizeRequests()
                 .antMatchers(HttpMethod.GET,"/").permitAll()
-                .antMatchers(HttpMethod.GET,"/login").permitAll()
                 .antMatchers(HttpMethod.GET,"/start").permitAll()
+                .antMatchers(HttpMethod.GET,"/login").permitAll()
+                .antMatchers(HttpMethod.GET,"/myLogin").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/myLogin")
                 .failureUrl("/login?error")
                 .permitAll()
                 .and()
-                .logout()
-                .permitAll();
+                .oauth2Login();
     }
 }
