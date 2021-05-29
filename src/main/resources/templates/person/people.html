@@ -4,7 +4,46 @@
 <body style="background-color: #1b59b5; color: aliceblue">
 <div th:replace="index :: menu"/>
 
-<h1>Person</h1>
-
+<div class="container">
+    <div class="row" >
+<div class="col-sm-2"></div>
+<div class="col-sm-8 align-items-center">
+    <h1 style="margin-top: 5%; margin-bottom: 5%">People</h1>
+    <table class="table" style="color: aliceblue">
+        <thead>
+        <tr>
+            <th scope="col"> firstName </th>
+            <th scope="col"> lastName </th>
+            <th scope="col"> username </th>
+            <th scope="col"> email </th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:if="${peopleList.empty}">
+            <td colspan="2"> No People </td>
+        </tr>
+        <tr th:each="person : ${peopleList}">
+            <td><span th:text="${person.getFirstName()}"></span></td>
+            <td><span th:text="${person.getLastName()}"></span></td>
+            <td><span th:id="username" th:text="${person.getUsername()}"></span></td>
+            <td><span th:text="${person.getEmail()}"></span></td>
+            <td>|</td>
+            <td><a href="/web/details" style="color: black">details</a></td>
+            <td><a href="/people/{#username}" style="color: black">delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <div style="margin-top: 7%">
+        <button type="button" class="btn btn-light" style="color: #1b59b5"
+                onclick="window.location.href='/web/people/create'">
+            <b>Create Person</b>
+        </button>
+        </div>
+</div></div>
+<div class="col-sm-2"></div>
+</div>
 </body>
 </html>

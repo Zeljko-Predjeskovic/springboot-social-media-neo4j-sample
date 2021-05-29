@@ -89,7 +89,7 @@ public class PersonNode extends Persistable{
             postsLiked.add(post);
     }
 
-    private PersonNode() { }
+    protected PersonNode() { }
 
     @Builder
     public PersonNode(String firstName, String lastName, String username, String email, ProfileNode profile) {

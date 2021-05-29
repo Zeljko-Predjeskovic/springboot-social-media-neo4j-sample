@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:replace="index :: header"/>
 <body style="background-color: #1b59b5; color: aliceblue">
-<div th:replace="index :: menu"/>
+<div th:replace="index :: menu"/></div>
+<br/>
+    <div class="container">
+            <div class="row" style="margin-top: 5%; margin-bottom: 5%">
+                <h1>Get Started</h1>
+            </div>
+            <div style="text-align: center">
+                <div class="row">
+                    <h2 style="margin-bottom: 3%">Use social media API</h2>
+                    <p>You can test the social media API on your projects by fetching from your project to our public
+                     resources </p>
+                    <p>Create your own person with a <b>POST</b>:</p>
+                    <div class="container" style="color: darkslategray;background-color: aliceblue; border-radius: 15px">
+                        <div style="margin: 15px"> <b>https://predjeskovic.com/socialmedia/people</b></div></p>
+                        <div style="margin: 2px"> <b>Requested Body:</b>
+                        { </p>
+                            <a style="color: darkgreen">"firstName:"</a> "firstName", </p>
+                            <a style="color: darkgreen">"lastName:"</a> "lastName", </p>
+                            <a style="color: darkgreen">"username:"</a> "username", </p>
+                            <a style="color: darkgreen">"email:"</a> "email"
+                            }
+                        </div>
+                    </div></p>
 
-<h1>Get Started</h1>
+                    <p>Find the person your created by typing the username from your creation with a <b>GET:</b></p>
+                    <div class="container" style="color: darkslategray;background-color: aliceblue; border-radius: 5px">
+                        <div style="padding: 2px">  <b>https://predjeskovic.com/socialmedia/people/username</b> </div>
+                    </div></p>
 
+                    <p>Watch all People who made an insert by creating a get request to see all the People with a
+                        <b>GET</b>:</p>
+                    <div class="container" style="color: darkslategray;background-color: aliceblue; border-radius: 5px">
+                        <div style="padding: 2px">  <b>https://predjeskovic.com/socialmedia/people</b> </div>
+                    </div></p>
+                </div>
+                <br/>
+                <div class="row">
+                    <h5>Test the API on the website UI</h5>
+                    <br/>
+                    <div class="col-sm-5"></div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-light" style="color: #1b59b5"
+                                onclick="window.location.href='/web/people'">
+                            <b>Try it now!!</b>
+                        </button>
+                    </div>
+                    <div class="col-sm-5"></div>
+                </div>
+                <br/>
+                <br/>
+                <div class="row">
+                    <h2>Run it yourself</h2>
+                    <p>Check out the <a style="color: black" href="https://github.com/Zeljko-Predjeskovic/springboot-social-media">Code</a>
+                        where you have an installation guide:
+                    </p>
+                </div>
+            </div>
+        </div>
 </body>
 </html>

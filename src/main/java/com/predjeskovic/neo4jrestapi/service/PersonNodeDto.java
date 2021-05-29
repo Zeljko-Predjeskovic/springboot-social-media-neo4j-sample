@@ -5,26 +5,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.predjeskovic.neo4jrestapi.domain.PersonNode;
 import com.predjeskovic.neo4jrestapi.domain.ProfileNode;
 import lombok.Getter;
+import lombok.Setter;
 
 public class PersonNodeDto {
 
-    @Getter
+    @Getter @Setter
     private Long id;
 
-    @Getter
+    @Getter @Setter
     private String firstName;
 
-    @Getter
+    @Getter @Setter
     private String lastName;
 
-    @Getter
+    @Getter @Setter
     private String username;
 
-    @Getter
+    @Getter @Setter
     private String email;
 
-    @Getter
+    @Getter @Setter
     private ProfileNode profile;
+
+    public PersonNodeDto() { }
 
     public PersonNodeDto(Long id, String firstName, String lastName, String username,
                          String email)

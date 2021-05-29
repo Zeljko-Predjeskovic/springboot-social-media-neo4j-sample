@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="index :: header"/>
+
+<body style="background-color: #1b59b5; color: aliceblue">
+<div th:replace="index :: menu"/>
+
+<div class="container">
+    <div class="row" >
+        <div class="col-sm-2"></div>
+
+        <div class="col-sm-8 align-items-center">
+            <h1 style="margin-top: 5%; margin-bottom: 5%">Create Person</h1>
+
+            <form th:action="@{/web/people/create}" method="post" th:object="${person}">
+            <div class="input-group mb-3">
+                <span class="input-group-text">First Name</span>
+                <input th:field="*{firstName}" type="text" class="form-control" placeholder="First Name"
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Last Name</span>
+                <input th:field="*{lastName}" type="text" class="form-control"  placeholder="Last Name"
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Username</span>
+                <input th:field="*{username}" type="text" class="form-control"  placeholder="Username"
+                       aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <div class="input-group mb-3">
+            <span class="input-group-text">E-mail</span>
+            <input th:field="*{email}" type="text" class="form-control" placeholder="Email "
+                   aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+
+            <div style="margin-top: 7%">
+                <input type="submit" class="btn btn-light" style="color: black" value="Create Person"/>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+
+</body>
+</html>
