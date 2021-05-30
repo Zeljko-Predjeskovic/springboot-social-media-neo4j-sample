@@ -5,8 +5,8 @@
  * 
  * May 23, 2021
  * 
- * check out the code:
- * https://github.com/Zeljko-Predjeskovic/springboot-social-media
+ * ### check out the code:
+ * #### https://github.com/Zeljko-Predjeskovic/springboot-social-media
  *
  * ### Introduction
  *
@@ -26,10 +26,10 @@
  * 
  * - Object Mapping: How do i map my classes into objects and its relations
  * 
- * - Persistence: Transporting and fetching data from the database with Neo4j
+ * - Persistence: Transporting data from the database with Neo4j
  * repository
  * 
- * - Service:
+ * - Service: Making the whole business logic
  * 
  * - Presentation/Controller: Building the routes for the rest api
  * 

@@ -52,7 +52,7 @@ public class Persistable {
     @Id @GeneratedValue(UUIDStringGenerator.class)
     private String id;
 
-        --equals,getter,setter--
+        --getter,setter--
     }
 }
 
@@ -83,25 +83,26 @@ public class PersonNode extends Persistable{
     /**
      *  Annotation *@Relationship* creates a relationship. In this case the
      *  relation is "FOLLOWS". In default the relation arrow will point to the
-     *  friend Node.
+     *  followed person Node.
      */
     @Nullable @Getter
     @Relationship(type = "FOLLOWS")
-    private List<PersonNode> friends;
+    private List<PersonNode> follows;
 
     /**
      * You can adjust the arrow pointing like in this annotaion.
      */
     @Relationship(type = "FOLLOWS", direction = Relationship.Direction.INCOMING)
+    private List<PersonNode> follows;
 
     /**
-     * Add method for the List of the friends the person follows
+     * Add method for the List of the followed person the person follows
      */
-    public void friendsWith(PersonNode friend) {
-        if (friends == null) {
-            friends = new ArrayList<PersonNode>();
+    public void followsPerson(FollowRelation followedPerson) {
+        if (follows == null) {
+            follows = new ArrayList<FollowRelation>();
         }
-        friends.add(friend);
+        follows.add(followedPerson);
     }
 
     /**
@@ -122,10 +123,10 @@ public class PersonNode extends Persistable{
  */
 @RelationshipProperties
 @ToString
-public class FriendRelation extends Persistable{
+public class FollowRelation extends Persistable{
 
     @Property @Getter
-    private LocalDate friendSince;
+    private LocalDate followsSince;
 
     /**
      * *@TargetNode* the node where the relation will point to.
@@ -133,9 +134,9 @@ public class FriendRelation extends Persistable{
     @TargetNode @Getter
     private PersonNode person;
 
-    private FriendRelation(){  }
+    private FollowRelation(){  }
 
-    public FriendRelation(LocalDate friendSince, PersonNode person){
+    public FollowRelation(LocalDate followsSince, PersonNode person){
 
 }
 
@@ -145,7 +146,7 @@ public class PersonNode extends Persistable{
     --properties--
 
     /**
-     * Make the friend relation as a List of the FriendRelation class
+     * Make the follow relation as a List of the FollowRelation class
      *
      * The output of this relation would look like this:
      *
@@ -153,16 +154,18 @@ public class PersonNode extends Persistable{
      *
      * The cool thing about that is, that the FOLLOWS relation stores data too
      * so that the person does not have to save a mass of data.
+     *
+     * If you add more persons in the friends list, the left person would point to more then one another person.
      */
     @Nullable @Getter
     @Relationship(type = "FOLLOWS")
-    private List<FriendRelation> friends;
+    private List<FollowRelation> friends;
 
-    public void friendsWith(FriendRelation friend) {
-        if (friends == null) {
-            friends = new ArrayList<FriendRelation>();
+    public void followsPerson(FollowRelation followedPerson) {
+        if (follows == null) {
+            follows = new ArrayList<FollowRelation>();
         }
-        friends.add(friend);
+        follows.add(followedPerson);
     }
 
         --NoArgsConstructor,ArgsConstructors,Equal and HaschCode, ToString--

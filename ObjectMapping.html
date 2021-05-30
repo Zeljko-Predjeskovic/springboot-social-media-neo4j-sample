@@ -21,7 +21,7 @@ Default generates the next available number.</p></div></div><div class="code"><d
     <span class="hljs-keyword">private</span> Long id;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>You can change your key generation for example into a UUID:</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Id</span> <span class="hljs-annotation">@GeneratedValue</span>(UUIDStringGenerator.class)
     <span class="hljs-keyword">private</span> String id;
 
-        --equals,getter,setter--
+        --getter,setter--
     }
 }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="node-entities-and-relations">Node entities and relations</h3></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Annotion <em>@Node</em> defines the class as a node. In this scenario, the class
 is a node named &quot;Person&quot;</p></div></div><div class="code"><div class="wrapper"><span class="hljs-annotation">@Node</span>(<span class="hljs-string">"Person"</span>)
@@ -33,46 +33,48 @@ is a node named &quot;Person&quot;</p></div></div><div class="code"><div class="
     <span class="hljs-annotation">@Getter</span> <span class="hljs-annotation">@Setter</span>
     <span class="hljs-keyword">private</span> String email;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p> Annotation <em>@Relationship</em> creates a relationship. In this case the
  relation is &quot;FOLLOWS&quot;. In default the relation arrow will point to the
- friend Node.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Nullable</span> <span class="hljs-annotation">@Getter</span>
+ followed person Node.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Nullable</span> <span class="hljs-annotation">@Getter</span>
     <span class="hljs-annotation">@Relationship</span>(type = <span class="hljs-string">"FOLLOWS"</span>)
-    <span class="hljs-keyword">private</span> List&lt;PersonNode&gt; friends;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>You can adjust the arrow pointing like in this annotaion.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Relationship</span>(type = <span class="hljs-string">"FOLLOWS"</span>, direction = Relationship.Direction.INCOMING)</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Add method for the List of the friends the person follows</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">friendsWith</span><span class="hljs-params">(PersonNode friend)</span> </span>{
-        <span class="hljs-keyword">if</span> (friends == <span class="hljs-keyword">null</span>) {
-            friends = <span class="hljs-keyword">new</span> ArrayList&lt;PersonNode&gt;();
+    <span class="hljs-keyword">private</span> List&lt;PersonNode&gt; follows;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>You can adjust the arrow pointing like in this annotaion.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Relationship</span>(type = <span class="hljs-string">"FOLLOWS"</span>, direction = Relationship.Direction.INCOMING)
+    <span class="hljs-keyword">private</span> List&lt;PersonNode&gt; follows;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Add method for the List of the followed person the person follows</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">followsPerson</span><span class="hljs-params">(FollowRelation followedPerson)</span> </span>{
+        <span class="hljs-keyword">if</span> (follows == <span class="hljs-keyword">null</span>) {
+            follows = <span class="hljs-keyword">new</span> ArrayList&lt;FollowRelation&gt;();
         }
-        friends.add(friend);
+        follows.add(followedPerson);
     }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Neo4j driver needs a no parameter constructor. Lombok generated sadly does not work</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">PersonNode</span><span class="hljs-params">()</span> </span>{ }
 
         --ArgsConstructors,Equal and HaschCode, ToString--
 }</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="relations-with-properties">Relations with properties</h3></div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p><em>@RelationshipProperties</em> can make a class into a relation with properties</p></div></div><div class="code"><div class="wrapper"><span class="hljs-annotation">@RelationshipProperties</span>
 <span class="hljs-annotation">@ToString</span>
-<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FriendRelation</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Persistable</span></span>{
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FollowRelation</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Persistable</span></span>{
 
     <span class="hljs-annotation">@Property</span> <span class="hljs-annotation">@Getter</span>
-    <span class="hljs-keyword">private</span> LocalDate friendSince;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p><em>@TargetNode</em> the node where the relation will point to.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@TargetNode</span> <span class="hljs-annotation">@Getter</span>
+    <span class="hljs-keyword">private</span> LocalDate followsSince;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p><em>@TargetNode</em> the node where the relation will point to.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@TargetNode</span> <span class="hljs-annotation">@Getter</span>
     <span class="hljs-keyword">private</span> PersonNode person;
 
-    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">FriendRelation</span><span class="hljs-params">()</span></span>{  }
+    <span class="hljs-function"><span class="hljs-keyword">private</span> <span class="hljs-title">FollowRelation</span><span class="hljs-params">()</span></span>{  }
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FriendRelation</span><span class="hljs-params">(LocalDate friendSince, PersonNode person)</span></span>{
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">FollowRelation</span><span class="hljs-params">(LocalDate followsSince, PersonNode person)</span></span>{
 
 }
 
 <span class="hljs-annotation">@Node</span>(<span class="hljs-string">"Person"</span>)
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PersonNode</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Persistable</span></span>{
 
-    --properties--</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Make the friend relation as a List of the FriendRelation class</p>
+    --properties--</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>Make the follow relation as a List of the FollowRelation class</p>
 <p>The output of this relation would look like this:</p>
 <p><img src="./images/graphDia2.png" alt="graphImage2"/></p>
 <p>The cool thing about that is, that the FOLLOWS relation stores data too
-so that the person does not have to save a mass of data.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Nullable</span> <span class="hljs-annotation">@Getter</span>
+so that the person does not have to save a mass of data.</p>
+<p>If you add more persons in the friends list, the left person would point to more then one another person.</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Nullable</span> <span class="hljs-annotation">@Getter</span>
     <span class="hljs-annotation">@Relationship</span>(type = <span class="hljs-string">"FOLLOWS"</span>)
-    <span class="hljs-keyword">private</span> List&lt;FriendRelation&gt; friends;
+    <span class="hljs-keyword">private</span> List&lt;FollowRelation&gt; friends;
 
-    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">friendsWith</span><span class="hljs-params">(FriendRelation friend)</span> </span>{
-        <span class="hljs-keyword">if</span> (friends == <span class="hljs-keyword">null</span>) {
-            friends = <span class="hljs-keyword">new</span> ArrayList&lt;FriendRelation&gt;();
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">followsPerson</span><span class="hljs-params">(FollowRelation followedPerson)</span> </span>{
+        <span class="hljs-keyword">if</span> (follows == <span class="hljs-keyword">null</span>) {
+            follows = <span class="hljs-keyword">new</span> ArrayList&lt;FollowRelation&gt;();
         }
-        friends.add(friend);
+        follows.add(followedPerson);
     }
 
         --NoArgsConstructor,ArgsConstructors,Equal and HaschCode, ToString--
