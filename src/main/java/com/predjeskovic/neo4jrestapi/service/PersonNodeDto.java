@@ -3,7 +3,6 @@ package com.predjeskovic.neo4jrestapi.service;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.predjeskovic.neo4jrestapi.domain.PersonNode;
-import com.predjeskovic.neo4jrestapi.domain.ProfileNode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,8 +23,6 @@ public class PersonNodeDto {
     @Getter @Setter
     private String email;
 
-    @Getter @Setter
-    private ProfileNode profile;
 
     public PersonNodeDto() { }
 
@@ -54,7 +51,6 @@ public class PersonNodeDto {
                 .lastName(lastName)
                 .username(username)
                 .email(email)
-                .profile(profile)
                 .build();
 
         person.setId(id);
@@ -68,7 +64,6 @@ public class PersonNodeDto {
                 .lastName(lastName)
                 .username(username)
                 .email(email)
-                .profile(profile)
                 .build();
 
         personR.setId(person.getId());
