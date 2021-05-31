@@ -23,7 +23,6 @@ public class PersonNodeDto {
     @Getter @Setter
     private String email;
 
-
     public PersonNodeDto() { }
 
     public PersonNodeDto(Long id, String firstName, String lastName, String username,

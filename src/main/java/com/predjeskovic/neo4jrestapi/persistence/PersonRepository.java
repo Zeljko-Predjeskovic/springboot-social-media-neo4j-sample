@@ -13,7 +13,7 @@ import java.util.Optional;
 public interface PersonRepository extends Neo4jRepository<PersonNode,Long> {
 
     @Query("MATCH (n:Person) RETURN n")
-    List<PersonNode> findAllPeople(); //Relations werden nicht mitgenommen
+    List<PersonNode> findAllPeople();
 
     PersonNode findByUsername(String username);
 
@@ -24,4 +24,5 @@ public interface PersonRepository extends Neo4jRepository<PersonNode,Long> {
 
     void deleteById(Long id);
 
+    void deleteByUsername(String username);
 }

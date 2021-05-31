@@ -48,7 +48,6 @@ public class PersonContoller {
     public String edit(@RequestParam(value = "username") String username, Model model){
         PersonNodeDto person = personService.findOne(username);
         model.addAttribute("person", person);
-        model.addAttribute("newPerson", new PersonNodeDto());
         return "person/edit.html";
     }
 

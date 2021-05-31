@@ -93,11 +93,11 @@ public class PersonNode extends Persistable{
 
     @Builder
     public PersonNode(String firstName, String lastName, String username, String email, ProfileNode profile) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.email = email;
-        this.profile = profile;
+        setFirstName(firstName);
+        setLastName(lastName);
+        setUsername(username);
+        setEmail(email);
+        setProfile(profile);
     }
 
     @Override
@@ -116,7 +116,7 @@ public class PersonNode extends Persistable{
 
     @Override
     public String toString() {
-        //showing the usernames by the followers
+        // showing the usernames by the followers
         // prevents recursive toString
         List<String> str = follows.stream().map(f-> f.getPerson().getUsername()).collect(Collectors.toList());
 

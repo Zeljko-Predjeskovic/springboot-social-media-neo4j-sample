@@ -14,29 +14,29 @@
 
 
             <form th:action="@{/web/people/edit(OldUsername=${person.getUsername()})}"
-                  method="post" th:object="${newPerson}">
+                  method="post" th:object="${person}">
                 <div class="input-group mb-3">
                     <span class="input-group-text">First Name</span>
-                    <input th:field="*{firstName}" th:placeholder="${person.getFirstName()}" type="text" class="form-control"
+                    <input th:field="*{firstName}" th:value="${person.getFirstName()}" type="text" class="form-control"
 
                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Last Name</span>
                     <input th:field="*{lastName}" type="text" class="form-control"
-                           th:placeholder="${person.getLastName()}"
+                           th:value="${person.getLastName()}"
                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">Username</span>
                     <input th:field="*{username}" type="text" class="form-control"
-                           th:placeholder="${person.getUsername()}"
+                           th:value="${person.getUsername()}"
                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
                 <div class="input-group mb-3">
                     <span class="input-group-text">E-mail</span>
                     <input th:field="*{email}" type="text" class="form-control"
-                           th:placeholder="${person.getEmail()}"
+                           th:value="${person.getEmail()}"
                            aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
                 </div>
 

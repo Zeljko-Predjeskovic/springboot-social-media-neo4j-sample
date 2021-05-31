@@ -22,6 +22,4 @@ public class ProfileNode extends Persistable{
         this.profilePic = profilePic;
         this.biography = biography;
     }
-
-
 }

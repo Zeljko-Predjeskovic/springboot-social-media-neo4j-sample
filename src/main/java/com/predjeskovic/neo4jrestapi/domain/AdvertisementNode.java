@@ -31,10 +31,10 @@ public class AdvertisementNode extends Persistable{
 
     @Builder
     public AdvertisementNode(String company, String tags, String image, String linkToProduct) {
-        this.company = company;
-        this.tags = tags;
-        this.image = image;
-        this.linkToProduct = linkToProduct;
+        setCompany(company);
+        setTags(tags);
+        setImage(image);
+        setLinkToProduct(linkToProduct);
     }
 
     @Override

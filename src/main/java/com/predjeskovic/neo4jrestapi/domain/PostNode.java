@@ -11,6 +11,10 @@ import org.springframework.lang.Nullable;
 @ToString
 public class PostNode extends Persistable{
 
+    @Property("title")
+    @Getter @Setter
+    private String title;
+
     @Property("description")
     @Getter @Setter
     private String description;
@@ -27,17 +31,16 @@ public class PostNode extends Persistable{
     @Nullable @Getter @Setter
     private String tags;
 
-    @Builder
-    public PostNode(String description, String cityLocation, String image, String tags){
-        this.description = description;
-        this.cityLocation = cityLocation;
-        this.image = image;
-        this.description = description;
-    }
-
-
     private PostNode(){  }
 
+    @Builder
+    public PostNode(String title, String description, String cityLocation, String image, String tags){
+        setTitle(title);
+        setDescription(description);
+        setCityLocation(cityLocation);
+        setImage(image);
+        setTags(tags);
+    }
 
 
 }

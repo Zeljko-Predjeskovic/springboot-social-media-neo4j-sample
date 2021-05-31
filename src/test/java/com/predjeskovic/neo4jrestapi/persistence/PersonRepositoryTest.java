@@ -111,6 +111,7 @@ public class PersonRepositoryTest {
         var personX = personRepository.findByUsername("yatotoast");
 
         personX.posted(PostNode.builder()
+                .title("MyFirstPost")
                 .cityLocation("Vienna")
                 .tags("lol,Wien,meme")
                 .description("Chillin with ma bois")

@@ -2,6 +2,7 @@ package com.predjeskovic.neo4jrestapi.domain;
 
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import org.springframework.data.neo4j.core.schema.RelationshipProperties;
 import org.springframework.data.neo4j.core.schema.TargetNode;
@@ -12,21 +13,22 @@ import java.time.LocalDate;
 @ToString
 public class CommentRelation extends Persistable{
 
-    @Getter
+    @Getter @Setter
     private String comment;
 
-    @Getter
+    @Getter @Setter
     private LocalDate commentedOn;
 
-    @TargetNode @Getter
+    @TargetNode
+    @Getter
     private PostNode post;
 
     public CommentRelation (){  }
 
     @Builder
     public CommentRelation(String comment, LocalDate commentedOn, PostNode post){
-        this.comment = comment;
-        this.commentedOn = commentedOn;
+        setComment(comment);
+        setCommentedOn(commentedOn);
         this.post = post;
     }
 
