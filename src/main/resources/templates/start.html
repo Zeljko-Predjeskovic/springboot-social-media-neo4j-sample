@@ -2,10 +2,11 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 <head th:replace="index :: header"/>
 <body style="background-color: #1b59b5; color: aliceblue">
-<div th:replace="index :: menu"/></div>
-<br/>
+<div th:replace="index :: menu"/>
+<div th:replace="index :: logo"/>
+
     <div class="container">
-            <div class="row" style="margin-top: 5%; margin-bottom: 5%">
+            <div class="row" style="margin-bottom: 5%">
                 <h1>Get Started</h1>
             </div>
             <div style="text-align: center">
@@ -50,15 +51,14 @@
                 <br/>
                 <div class="row">
                     <h5>Test the API on the website UI</h5>
-                    <br/>
-                    <div class="col-sm-5"></div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4"></div>
+                    <div class="col-sm-4">
                         <button type="button" class="btn btn-light" style="color: #1b59b5"
                                 onclick="window.location.href='/web/people'">
                             <b>Try it now!!</b>
                         </button>
                     </div>
-                    <div class="col-sm-5"></div>
+                    <div class="col-sm-4"></div>
                 </div>
                 <br/>
                 <br/>
