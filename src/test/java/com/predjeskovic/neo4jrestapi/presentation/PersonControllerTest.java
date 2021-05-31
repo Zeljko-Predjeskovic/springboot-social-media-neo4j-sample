@@ -34,7 +34,7 @@ public class PersonControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
-     @MockBean
+    @MockBean
     private PersonService personService;
 
     @Test

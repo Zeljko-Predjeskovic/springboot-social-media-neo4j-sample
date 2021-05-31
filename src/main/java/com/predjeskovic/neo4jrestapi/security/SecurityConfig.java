@@ -1,4 +1,4 @@
-/*package com.predjeskovic.neo4jrestapi.security;
+package com.predjeskovic.neo4jrestapi.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -17,6 +17,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
              .antMatchers(HttpMethod.GET,"/start").permitAll()
              .antMatchers(HttpMethod.GET,"/login").permitAll()
              .antMatchers(HttpMethod.GET,"/myLogin").permitAll()
+             .antMatchers(HttpMethod.GET,"/images/**").permitAll()
              .anyRequest().authenticated()
              .and()
              .formLogin()
@@ -26,4 +27,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
              .and()
              .oauth2Login();
  }
-}*/
+}
