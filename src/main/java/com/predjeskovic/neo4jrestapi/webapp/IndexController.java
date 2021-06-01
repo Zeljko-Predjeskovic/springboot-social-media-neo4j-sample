@@ -12,22 +12,32 @@ public class IndexController {
 
     @GetMapping("/")
     public String index(Model model) {
-        return "index.html";
+        return "index";
     }
 
     @GetMapping("/start")
     public String getStarted(Model model) {
-        return "start.html";
+        return "start";
+    }
+
+    @GetMapping("imprint")
+    public String imprint(){
+        return "imprint";
+    }
+
+    @GetMapping("contact")
+    public String contact(){
+        return "contact";
     }
 
     @GetMapping("/login")
     public String login(){
-        return "login.html";
+        return "login";
     }
 
     @GetMapping("/myLogin")
     public String myLogin(){
-        return "login.html";
+        return "login";
     }
 
 

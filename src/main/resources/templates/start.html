@@ -3,15 +3,33 @@
 <head th:replace="index :: header"/>
 <body style="background-color: #1b59b5; color: aliceblue">
 <div th:replace="index :: menu"/>
-<div th:replace="index :: logo"/>
-
+<div class="d-flex p-2">
+    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px; border-radius: 5px; margin: 2%">
+            <span class="fs-4" style="border-radius: 5px;background-color: #1b59b5;color: aliceblue; text-align: center">
+                Table of content</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="#one" class="nav-link link-dark">
+                    Use of social media API
+                </a>
+            </li>
+            <li>
+                <a href="#two" class="nav-link link-dark">
+                    Run it yourseld
+                </a>
+            </li>
+        </ul>
+    </div>
     <div class="container">
-            <div class="row" style="margin-bottom: 5%">
+        <div th:replace="index :: logo"/>
+            <div class="row" style="margin-bottom: 5%; margin-top: 2%">
                 <h1>Get Started</h1>
             </div>
             <div style="text-align: center">
                 <div class="row">
-                    <h2 style="margin-bottom: 3%">Use social media API</h2>
+                    <h2 id="one" style="margin-bottom: 3%">Use of social media API</h2>
                     <p>You can test the social media API on your projects by fetching from your project to our public
                      resources </p>
                     <p>Create your own person with a <b>POST</b>:</p>
@@ -51,6 +69,9 @@
                 <br/>
                 <div class="row">
                     <h5>Test the API on the website UI</h5>
+                    <p> If you need to make a picture of social media API,
+                        you can have a look into the API by testing it with
+                        our small user interface. </p>
                     <div class="col-sm-4"></div>
                     <div class="col-sm-4">
                         <button type="button" class="btn btn-light" style="color: #1b59b5"
@@ -63,12 +84,15 @@
                 <br/>
                 <br/>
                 <div class="row">
-                    <h2>Run it yourself</h2>
+                    <h2 id="two">Run it yourself</h2>
+                    <p>You can even run it yourself with Docker!</p>
                     <p>Check out the <a style="color: black" href="https://github.com/Zeljko-Predjeskovic/springboot-social-media">Code</a>
                         where you have an installation guide:
                     </p>
+                    <p></p>
                 </div>
             </div>
         </div>
+</div>
 </body>
 </html>

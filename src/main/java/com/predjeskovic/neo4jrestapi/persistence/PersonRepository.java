@@ -19,6 +19,8 @@ public interface PersonRepository extends Neo4jRepository<PersonNode,Long> {
 
     Optional<PersonNode> findOneByUsername(String username);
 
+    Optional<PersonNode> findOneByEmail(String email);
+
     @Query("MATCH (n:Person {username: $username}) RETURN n")
     PersonNode findByUsernameCustom(String username);
 

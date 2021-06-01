@@ -1,5 +1,6 @@
 package com.predjeskovic.neo4jrestapi.service;
 
+import com.predjeskovic.neo4jrestapi.exceptions.PersonServiceException;
 import com.predjeskovic.neo4jrestapi.persistence.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -26,13 +27,42 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
-    public PersonNodeDto findOne(String username){
-        return personRepository.findOneByUsername(username)
-                .map(PersonNodeDto::fromPersonNode)
-                .orElse(null);
+    public PersonNodeDto findOne(String username) {
+        if(username==null || username.isEmpty()){
+            throw new PersonServiceException("Username cannot be null or empty!!");
+        }
+        else{
+            try {
+                return personRepository.findOneByUsername(username)
+                        .map(PersonNodeDto::fromPersonNode)
+                        .orElse(null);
+            }
+            catch (Exception e){
+                throw new PersonServiceException("User could not be found.",e);
+            }
+        }
+    }
+
+    public PersonNodeDto findOneByEmail(String email) {
+        if(email==null || email.isEmpty()){
+            throw new PersonServiceException("Email cannot be null or empty!!");
+        }
+        else{
+            try {
+                return personRepository.findOneByUsername(email)
+                        .map(PersonNodeDto::fromPersonNode)
+                        .orElse(null);
+            }
+            catch (Exception e){
+                throw new PersonServiceException("Email could not be found.",e);
+            }
+        }
     }
 
     public PersonNodeDto insert(PersonNodeDto personDto){
+        if(findOne(personDto.getUsername())!=null || findOneByEmail(personDto.getEmail())!=null){
+            throw new PersonServiceException("User or email already exists!!");
+        }
         var person = Optional.ofNullable(personDto)
                 .map(PersonNodeDto::toPersonNode)
                 .map(personRepository::save)

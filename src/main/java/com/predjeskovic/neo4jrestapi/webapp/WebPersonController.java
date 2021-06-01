@@ -9,12 +9,12 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/web/people")
-public class PersonContoller {
+public class WebPersonController {
 
     private final PersonService personService;
 
     @Autowired
-    public PersonContoller(PersonService personService) {
+    public WebPersonController(PersonService personService) {
         this.personService = personService;
     }
 
@@ -22,18 +22,18 @@ public class PersonContoller {
     public String people(Model model) {
         model.addAttribute("peopleList",personService.findAll());
         model.addAttribute("reqPerson", new PersonNodeDto());
-        return "person/people.html";
+        return "person/people";
     }
 
     @GetMapping("/create")
     public String create(Model model) {
         model.addAttribute("person", new PersonNodeDto());
-        return "person/create.html";
+        return "person/create";
     }
 
     @PostMapping("/create")
     public String creatAction(@ModelAttribute PersonNodeDto person){
-        personService.insert(person);
+            personService.insert(person);
         return "redirect:/web/people";
     }
 
@@ -41,7 +41,7 @@ public class PersonContoller {
     public String detail(@RequestParam(value = "username") String username,Model model){
         PersonNodeDto person = personService.findOne(username);
         model.addAttribute("person",person);
-        return "person/detail.html";
+        return "person/detail";
     }
 
     @GetMapping("/edit")
