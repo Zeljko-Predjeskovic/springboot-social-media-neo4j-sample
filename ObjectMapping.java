@@ -25,10 +25,10 @@
  * * The comment and follow relation has a targed node which its points to. Follow points to a person and comment
  * points to a post
  *
- * The model in an ER-diagram would look like this:
+ * The model in an ER-diagram would look like this.
  *
  *
- * <img src="./images/ERModell.png" alt="ERImage" width="450px"/>
+ * <img src="./images/ERModell.PNG" alt="ERImage" width="450px"/>
  *
  *
  */

@@ -158,41 +158,9 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         "projectPath": "persistence.java",
         "targetPath": "persistence",
         "pageTitle": "persistence",
-        "firstHeader": {
-          "type": "heading",
-          "data": {
-            "level": 1,
-            "title": "Persistence",
-            "slug": "persistence",
-            "isFileHeader": true
-          },
-          "depth": 1,
-          "children": [
-            {
-              "type": "heading",
-              "data": {
-                "level": 3,
-                "title": "Neo4j Cypher queries",
-                "slug": "neo4j-cypher-queries"
-              },
-              "depth": 3
-            }
-          ]
-        },
-        "title": "Persistence"
+        "title": "persistence"
       },
-      "depth": 1,
-      "outline": [
-        {
-          "type": "heading",
-          "data": {
-            "level": 3,
-            "title": "Neo4j Cypher queries",
-            "slug": "neo4j-cypher-queries"
-          },
-          "depth": 3
-        }
-      ]
+      "depth": 1
     }
   ];
 
