@@ -59,9 +59,89 @@ f.event={add:function(a,c,d,e,g){var h,i,j,k,l,m,n,o,p,q,r,s;if(!(a.nodeType===3
         "projectPath": "ObjectMapping.java",
         "targetPath": "ObjectMapping",
         "pageTitle": "ObjectMapping",
-        "title": "ObjectMapping"
+        "firstHeader": {
+          "type": "heading",
+          "data": {
+            "level": 1,
+            "title": "Object Mapping",
+            "slug": "object-mapping",
+            "isFileHeader": true
+          },
+          "depth": 1,
+          "children": [
+            {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Example of a Graph model:",
+                "slug": "example-of-a-graph-model"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Id and Generated value",
+                "slug": "id-and-generated-value"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Node entities and relations",
+                "slug": "node-entities-and-relations"
+              },
+              "depth": 3
+            }, {
+              "type": "heading",
+              "data": {
+                "level": 3,
+                "title": "Relations with properties",
+                "slug": "relations-with-properties"
+              },
+              "depth": 3
+            }
+          ]
+        },
+        "title": "Object Mapping"
       },
-      "depth": 1
+      "depth": 1,
+      "outline": [
+        {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "Example of a Graph model:",
+            "slug": "example-of-a-graph-model"
+          },
+          "depth": 3
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "Id and Generated value",
+            "slug": "id-and-generated-value"
+          },
+          "depth": 3
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "Node entities and relations",
+            "slug": "node-entities-and-relations"
+          },
+          "depth": 3
+        }, {
+          "type": "heading",
+          "data": {
+            "level": 3,
+            "title": "Relations with properties",
+            "slug": "relations-with-properties"
+          },
+          "depth": 3
+        }
+      ]
     }, {
       "type": "file",
       "data": {

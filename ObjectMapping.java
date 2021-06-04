@@ -14,9 +14,8 @@
  * while the relations are associated attributes where the object is the target
  * node. We can also define relations in classes if we want them to have properties.
  *
+ *
  * <img src="./images/graphDia.png" alt="graphImage" width="450px"/>
- *
- *
  *
  *
  * * Every nodes and relations clearly identity is the Id from persistable. PersonNode identifies extra with an username
@@ -28,7 +27,10 @@
  *
  * The model in an ER-diagram would look like this:
  *
- * <img src="./images/ER-Modell.png" alt="ERImage" width="450px"/>
+ *
+ * <img src="./images/ERModell.png" alt="ERImage" width="450px"/>
+ *
+ *
  */
 
 
