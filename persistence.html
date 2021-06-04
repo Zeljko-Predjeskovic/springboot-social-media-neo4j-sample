@@ -1,0 +1,37 @@
+<!DOCTYPE html><html lang="en"><head><title>persistence</title></head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0"><meta name="groc-relative-root" content=""><meta name="groc-document-path" content="persistence"><meta name="groc-project-path" content="persistence.java"><link rel="stylesheet" type="text/css" media="all" href="assets/style.css"><script type="text/javascript" src="assets/behavior.js"></script><body><div id="meta"><div class="file-path">persistence.java</div></div><div id="document"><div class="segment"><div class="comments "><div class="wrapper"><h1 id="persistence">Persistence</h1>
+<p>The persistence is the cut between the database and the project.</p></div></div><div class="code"><div class="wrapper"><span class="hljs-annotation">@Repository</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">PersonRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Neo4jRepository</span>&lt;<span class="hljs-title">PersonNode</span>,<span class="hljs-title">Long</span>&gt; </span>{
+
+    <span class="hljs-function">PersonNode <span class="hljs-title">findByUsername</span><span class="hljs-params">(String username)</span></span>;
+
+    <span class="hljs-function">Optional&lt;PersonNode&gt; <span class="hljs-title">findOneByUsername</span><span class="hljs-params">(String username)</span></span>;</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><p>You can also make your own custom query:</p></div></div><div class="code"><div class="wrapper">    <span class="hljs-annotation">@Query</span>(<span class="hljs-string">"MATCH (n:Person {username: $username}) RETURN n"</span>)
+    <span class="hljs-function">PersonNode <span class="hljs-title">findByUsernameCustom</span><span class="hljs-params">(String username)</span></span>;
+
+    <span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">deleteById</span><span class="hljs-params">(Long id)</span></span>;
+
+}</div></div></div><div class="segment"><div class="comments "><div class="wrapper"><h3 id="neo4j-cypher-queries">Neo4j Cypher queries</h3>
+<p>A great guide to learn cypher query language: <a href="https://neo4j.com/developer/cypher/">https://neo4j.com/developer/cypher/</a></p>
+<p>Cypher query is a query langua for graphs. It is pretty simple and also fast.</p>
+<p>Query examples:</p>
+<pre><code> $ MATCH (n) RETURN n</code></pre>
+<p>this one shows you alle the Nodes</p>
+<hr>
+<pre><code> $ MATCH (n)-[r]-&gt;(m) RETURN n,r,m</code></pre>
+<p>shows all nodes with its relations</p>
+<hr>
+<pre><code> $ MATCH (n) RETURN n</code></pre>
+<p>shows 25 nodes even if you have more.</p>
+<hr>
+<pre><code>  $ CREATE (n:Person {name:&quot;Laura&quot;}) RETURN n</code></pre>
+<p>creates a node name person with a property name.</p>
+<hr>
+<pre><code>  $ MATCH (n:Person {name:&quot;Laura&quot;}) SET n.age=20 RETURN n</code></pre>
+<p>or with WHERE</p>
+<pre><code>  $ MATCH (n:Person) WHERE n.name=&quot;Laura&quot; SET n.age=20 RETURN n</code></pre>
+<p>finds person with the given name and updates it with a new age.</p>
+<hr>
+<pre><code>  $ MATCH (n:Person {name:&quot;Laura&quot;}) REMOVE n</code></pre>
+<p>deletes person with the given name.</p>
+<hr>
+<pre><code>   $ MATCH (n:Person {name:&quot;Laura&quot;}), (m:Person {name:&quot;Zeljko&quot;}) MARGE (n)-[r:FRIENDS]-&gt;(b)</code></pre>
+<p>creates a relation betweern two people.</p></div></div></div></div></body></html>

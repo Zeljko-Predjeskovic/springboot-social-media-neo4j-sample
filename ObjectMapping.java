@@ -12,9 +12,23 @@
  * The nodes are connected with arrows which are the relations.
  * Nodes can also be seen as entities and will be coded as java classes
  * while the relations are associated attributes where the object is the target
- * node.
+ * node. We can also define relations in classes if we want them to have properties.
  *
  * <img src="./images/graphDia.png" alt="graphImage" width="450px"/>
+ *
+ *
+ *
+ *
+ * * Every nodes and relations clearly identity is the Id from persistable. PersonNode identifies extra with an username
+ * and email.
+ * * A person can follow many other people. He has a profile, can create posts and comment and like on posts. A person
+ * also can click on an Advertisement.
+ * * The comment and follow relation has a targed node which its points to. Follow points to a person and comment
+ * points to a post
+ *
+ * The model in an ER-diagram would look like this:
+ *
+ * <img src="./images/ER-Modell.png" alt="ERImage" width="450px"/>
  */
 
 
@@ -137,7 +151,7 @@ public class FollowRelation extends Persistable{
     private FollowRelation(){  }
 
     public FollowRelation(LocalDate followsSince, PersonNode person){
-
+    }
 }
 
 @Node("Person")
@@ -147,16 +161,7 @@ public class PersonNode extends Persistable{
 
     /**
      * Make the follow relation as a List of the FollowRelation class
-     *
-     * The output of this relation would look like this:
-     *
-     * <img src="./images/graphDia2.png" alt="graphImage2"/>
-     *
-     * The cool thing about that is, that the FOLLOWS relation stores data too
-     * so that the person does not have to save a mass of data.
-     *
-     * If you add more persons in the friends list, the left person would point to more then one another person.
-     */
+     * */
     @Nullable @Getter
     @Relationship(type = "FOLLOWS")
     private List<FollowRelation> friends;
@@ -171,6 +176,42 @@ public class PersonNode extends Persistable{
         --NoArgsConstructor,ArgsConstructors,Equal and HaschCode, ToString--
 }
 
-
+/**
+ *
+ * The output of this relation would look like this:
+ *
+ * <img src="./images/graphDia2.png" alt="graphImage2"/>
+ *
+ *
+ */
+@Node("Person")
+public class PersonNode extends Persistable {
+    private FollowRelation follows;
 }
 
+@RelationshipProperties
+public class FollowRelation extends Persistable {
+    @TargetNode
+    private PersonNode person;
+}
+
+/**
+ * The cool thing about that is, that the FOLLOWS relation stores data too
+ * so that the person does not have to save a mass of data.
+ *
+ */
+
+/**
+ * If you add more persons in the friends list, the left person would point to more then one another person.
+ *
+ */
+
+@Node("Person")
+public class PersonNode extends Persistable {
+    private List<FollowRelation> follows;
+}
+
+/**
+ *
+ * <img src="./images/graphDia3.png" alt="graphImage3"/>
+ */
