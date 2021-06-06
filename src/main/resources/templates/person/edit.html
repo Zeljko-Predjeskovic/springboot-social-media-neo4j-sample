@@ -14,7 +14,7 @@
             <h1 style="margin-top: 5%; margin-bottom: 5%">Edit</h1>
 
 
-            <form th:action="@{/web/people/edit(OldUsername=${person.getUsername()})}"
+            <form th:action="@{/web/people/edit/(OldUsername=${person.getUsername()})}"
                   method="post" th:object="${person}">
                 <div class="input-group mb-3">
                     <span class="input-group-text">First Name</span>

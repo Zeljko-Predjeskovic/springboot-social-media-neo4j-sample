@@ -1,6 +1,5 @@
 package com.predjeskovic.neo4jrestapi.presentation;
 
-
 import com.predjeskovic.neo4jrestapi.service.PersonNodeDto;
 import com.predjeskovic.neo4jrestapi.service.PersonService;
 import org.junit.jupiter.api.MethodOrderer;
@@ -18,7 +17,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import java.util.List;
 
 import static org.hamcrest.Matchers.containsString;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -37,16 +35,6 @@ public class PersonControllerTest {
     @MockBean
     private PersonService personService;
 
-    @Test
-    void assertDeleteWithoutUsername() throws Exception{
-        mockMvc.perform(MockMvcRequestBuilders.delete("/people"))
-                .andDo(print())
-                .andExpect(status().isMethodNotAllowed());
-
-        Mockito
-                .verify(personService, times(0))
-                .delete(any());
-    }
 
     @Test
     void assertDelete() throws Exception{

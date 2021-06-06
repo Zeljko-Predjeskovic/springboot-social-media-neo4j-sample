@@ -5,6 +5,7 @@ import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.time.LocalDate;
 
 
 @SpringBootTest
@@ -82,7 +83,7 @@ public class PersonRepositoryTest {
         Assertions.assertTrue(personX!=null && personX.getId()!=null);
     }
 
-/*    @Order(4)
+    @Order(4)
     @Test
     public void addRelationBetweenTwoPersons(){
        var personX = personRepository.findByUsername("yatotoast");
@@ -103,7 +104,7 @@ public class PersonRepositoryTest {
             throw new RuntimeException("AddRelationBetweenTwoPersons failed",e);
         }
     }
-*/
+
 
     @Order(5)
     @Test
