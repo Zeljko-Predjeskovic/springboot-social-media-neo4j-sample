@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-@Service @Transactional
+@Service @Transactional(rollbackFor = PersonServiceException.class)
 public class PersonService {
 
     private final PersonRepository personRepository;
