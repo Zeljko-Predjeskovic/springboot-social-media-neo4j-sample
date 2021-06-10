@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.predjeskovic</groupId>
-	<artifactId>neo4j-rest-api</artifactId>
+	<artifactId>social-media-rest-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>neo4j-rest-api</name>
-	<description>Springboot with neo4j</description>
+	<name>social-media-rest-api</name>
+	<description>Social Media API with springboot and neo4j</description>
 	<properties>
 		<java.version>16</java.version>
 		<maven.compiler.source>${java.version}</maven.compiler.source>
@@ -28,14 +28,14 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		<dependency>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-oauth2-client</artifactId>
-	</dependency>
+	</dependency>-->
 
 
 		<dependency>
