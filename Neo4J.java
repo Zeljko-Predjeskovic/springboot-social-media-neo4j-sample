@@ -18,6 +18,9 @@
  * to expose some of your personal information and accept the license but thats
  * nothing new.
  *
+ * The community edition does not provide two of the most important features the high performance and online backup.
+ * But it is still good for small data.
+ *
  * After the installation open neo4j desktop. It should look like this:
  *
  *
