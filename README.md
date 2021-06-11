@@ -34,4 +34,27 @@ connection.
 
 ## Run it on docker
 
+Clone project:
+
+    git clone https://github.com/Zeljko-Predjeskovic/springboot-social-media.git
+
+
+Change in the properties the neo4j uri:
+
+    spring.data.neo4j.uri= bolt://neo4j:7687
+
+Open cmd for the project:
+
+    cd springboot-social-media
+
+Maven install for the target/*.jar file
+
+    mvn install
+
+Build social-media images
+
     docker build -t social-media.jar .
+
+Build container with app and database
+
+    docker-compose up
