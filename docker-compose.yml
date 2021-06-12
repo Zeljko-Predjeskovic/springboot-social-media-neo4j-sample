@@ -2,7 +2,7 @@ version: "2"
 
 services:
   social-media-api-server:
-    image: social-media.jar
+    build: .
     ports:
       - "8080:8080"
     depends_on:

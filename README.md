@@ -51,10 +51,6 @@ Maven install for the target/*.jar file
 
     mvn install
 
-Build social-media images
-
-    docker build -t social-media.jar .
-
 Build container with app and database
 
     docker-compose up
