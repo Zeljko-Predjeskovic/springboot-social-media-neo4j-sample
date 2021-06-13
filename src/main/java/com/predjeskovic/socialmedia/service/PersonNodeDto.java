@@ -2,9 +2,12 @@ package com.predjeskovic.socialmedia.service;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.predjeskovic.socialmedia.domain.FollowRelation;
 import com.predjeskovic.socialmedia.domain.PersonNode;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.time.LocalDate;
 
 public class PersonNodeDto {
 
@@ -70,13 +73,25 @@ public class PersonNodeDto {
         return personR;
     }
 
+    public PersonNode follows(PersonNodeDto followedPerson){
+        var person = this.toPersonNode();
+
+        person.followsPerson(FollowRelation.builder()
+                .followsSince(LocalDate.now())
+                .person(followedPerson.toPersonNode())
+                .build());
+
+        return person;
+    }
+
     @JsonCreator(mode=JsonCreator.Mode.PROPERTIES)
     public static PersonNodeDto fromJsonAttributes(
+            @JsonProperty("id") Long id,
             @JsonProperty("firstName") String firstName,
             @JsonProperty("lastName") String lastName,
             @JsonProperty("username") String username,
             @JsonProperty("email") String email){
-        return new PersonNodeDto(null,firstName,lastName,username,email);
+        return new PersonNodeDto(id,firstName,lastName,username,email);
     }
 
 }

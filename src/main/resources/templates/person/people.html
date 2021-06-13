@@ -23,7 +23,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:if="${peopleList.empty}">
+        <tr th:if="${peopleList.isEmpty()}">
             <td colspan="2"> No People </td>
         </tr>
         <tr th:each="person : ${peopleList}">

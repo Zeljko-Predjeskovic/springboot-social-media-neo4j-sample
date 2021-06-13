@@ -83,6 +83,18 @@ public class PersonService {
         return updatedPerson;
     }
 
+    public PersonNodeDto follows(PersonNodeDto person, String fromFollowUsername){
+        var followedPerson= Optional.ofNullable(fromFollowUsername)
+                .flatMap(it -> personRepository.findOneByUsername(it))
+                .map(PersonNodeDto::fromPersonNode)
+                .map(itFollowedPerson -> person.follows(itFollowedPerson))
+                .map(personRepository::save)
+                .map(PersonNodeDto::fromPersonNode)
+                .orElse(null);
+
+        return followedPerson;
+    }
+
     public  void delete (String username){
         var person = personRepository.findOneByUsername(username);
         personRepository.deleteById(person.get().getId());

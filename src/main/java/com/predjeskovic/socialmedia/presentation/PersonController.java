@@ -41,6 +41,11 @@ public class PersonController {
         return personService.replace(username, person);
     }
 
+    @PutMapping("/follows/{followUsername}")
+    public PersonNodeDto follows(@PathVariable String followUsername, @RequestBody PersonNodeDto person){
+        return personService.follows(person,followUsername);
+    }
+
     @DeleteMapping("/{username}")
     public void delete(@PathVariable String username){
         personService.delete(username);

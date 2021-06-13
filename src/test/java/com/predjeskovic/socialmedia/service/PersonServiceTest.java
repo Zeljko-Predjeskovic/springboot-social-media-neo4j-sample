@@ -19,6 +19,7 @@ public class PersonServiceTest {
     @Autowired
     private PersonRepository personRepository;
 
+
     private PersonNodeDto person = new PersonNodeDto(null,"Zeljko","Predjeskovic","yatotoast",
                 "xyz@gmail.com");
 

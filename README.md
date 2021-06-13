@@ -54,3 +54,9 @@ Maven install for the target/*.jar file
 Build container with app and database
 
     docker-compose up
+
+## When it runs
+
+After you run the app, open the UI on the web browser, usually on localhost:8080. 
+There you can read about the API services and 
+also test them visually.
