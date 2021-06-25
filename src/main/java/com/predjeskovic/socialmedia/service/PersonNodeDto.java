@@ -6,8 +6,11 @@ import com.predjeskovic.socialmedia.domain.FollowRelation;
 import com.predjeskovic.socialmedia.domain.PersonNode;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.lang.Nullable;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class PersonNodeDto {
 

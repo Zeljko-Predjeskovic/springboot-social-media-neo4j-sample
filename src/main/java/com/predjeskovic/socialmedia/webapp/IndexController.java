@@ -20,11 +20,6 @@ public class IndexController {
         return "start";
     }
 
-    @GetMapping("imprint")
-    public String imprint(){
-        return "imprint";
-    }
-
     @GetMapping("contact")
     public String contact(){
         return "contact";
@@ -39,7 +34,5 @@ public class IndexController {
     public String myLogin(){
         return "login";
     }
-
-
 
 }
