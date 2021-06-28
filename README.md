@@ -1,6 +1,6 @@
 # Springboot Application with Neo4J 
 
-### *Read Blog/Documentation:  https://zeljko-predjeskovic.github.io/springboot-social-media/*
+### *Read Blog/Documentation (in progress):  https://zeljko-predjeskovic.github.io/springboot-social-media/*
 
 ## Sources
 
